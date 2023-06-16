@@ -110,7 +110,7 @@ export default function Reel({ projects }: props) {
       setTimeout(function () {
         document.getElementById('bigscreen')?.scrollIntoView({
           behavior: 'smooth',
-          block: 'center',
+          block: 'start',
           inline: 'center',
         });
       }, 500);
@@ -130,7 +130,7 @@ export default function Reel({ projects }: props) {
       setTimeout(function () {
         document.getElementById('bigscreen')?.scrollIntoView({
           behavior: 'smooth',
-          block: 'center',
+          block: 'start',
           inline: 'center',
         });
       }, 500);
