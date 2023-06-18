@@ -37,7 +37,7 @@ export default function Offer({offer}:OfferProps){
             <div dangerouslySetInnerHTML={{__html: offer.intro}} />
             {offer.parts.map(part=>{
                 return(
-                    <div className={s.part}>
+                    <div className={s.part} key={part.title}>
                         <h4>{part.title}</h4>
                         <div dangerouslySetInnerHTML={{__html: part.description}} />
                         <div dangerouslySetInnerHTML={{__html: part.content}} />
