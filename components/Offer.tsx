@@ -25,22 +25,22 @@ interface Offer_part{
   }
 
 export default function Offer({offer}:OfferProps){
-    console.log
-    return(
+
+  return(
         <details className={s.details}>
           <summary className={s.summary}>
             <h2>{offer.title}</h2>
             <p>{offer.tagline}</p>
-            <div className={s.price}>{offer.price}</div>
+            <h2 className={s.price}>{offer.price}</h2>
           </summary>
           <article className={s.description}>
-            <div dangerouslySetInnerHTML={{__html: offer.intro}} />
+            <div className={s.intro} dangerouslySetInnerHTML={{__html: offer.intro}} />
             {offer.parts.map(part=>{
                 return(
                     <div className={s.part} key={part.title}>
                         <h4>{part.title}</h4>
                         <div dangerouslySetInnerHTML={{__html: part.description}} />
-                        <div dangerouslySetInnerHTML={{__html: part.content}} />
+                        <div className={s.part_description} dangerouslySetInnerHTML={{__html: part.content}} />
                     </div>
                 )
             })}

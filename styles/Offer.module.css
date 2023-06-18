@@ -6,6 +6,10 @@
     padding: 1rem;
 }
 
+.details:nth-last-child(n+2){
+    margin: 0 0 2rem 0;
+}
+
 .summary{
     list-style-type: none;
     display: flex;
@@ -26,4 +30,25 @@
     height: 0.25rem;
     content: "";
     background: linear-gradient(090deg, deeppink, cyan);
+}
+
+.intro{
+    font-style: italic;
+}
+
+.part h4{
+    color: cyan;
+    margin: 3rem 0 0 0;
+}
+
+.part_description ul{
+    list-style: none;
+}
+
+.part_description > ul li::before{
+    font-weight: bold;
+    width: 1rem;
+    color: deeppink;
+    content: "\2022";
+    display: inline-block;
 }
