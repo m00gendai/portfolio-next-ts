@@ -32,7 +32,7 @@ export default function Angebote({offers}:OfferProps) {
       <section className="section">
       <h1 className="title">Angebote</h1>
       {offers.map(offer=>{
-        return <Offer offer={offer} />
+        return <Offer offer={offer} key={offer._id}/>
       })}
       </section>
     </main>
