@@ -1,0 +1,29 @@
+.details{
+    position: relative;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.summary{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.description{
+    position: relative;
+    padding: 1rem 0 0 0;
+}
+
+.description::before{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transform: translateY(-50%);
+    height: 0.25rem;
+    content: "";
+    background: linear-gradient(090deg, deeppink, cyan);
+}
