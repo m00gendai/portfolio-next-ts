@@ -171,7 +171,7 @@ export default function Reel({ projects }: props) {
                 backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${project.image.path}")`,
               }}
             >
-              {project.name}
+              {project.image === null ? project.name : null}
             </div>
           </div>
         );
