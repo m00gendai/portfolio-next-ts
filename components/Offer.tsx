@@ -1,4 +1,5 @@
 import s from "../styles/Offer.module.css"
+import Link from "next/link"
 
 interface Offer_part{
     title: string;
@@ -22,16 +23,17 @@ interface Offer_part{
 
   interface OfferProps{
     offer: Offer_item;
+    isMobile: boolean;
   }
 
-export default function Offer({offer}:OfferProps){
+export default function Offer({offer, isMobile}:OfferProps){
 
   return(
         <details className={s.details}>
-          <summary className={s.summary}>
-            <h2>{offer.title}</h2>
-            <p>{offer.tagline}</p>
-            <h2 className={s.price}>{offer.price}</h2>
+          <summary className={s.summary} style={isMobile ? {gridTemplateColumns:"1fr"} : {gridTemplateColumns: "2fr 3fr 1fr"}}>
+            <h2 className={s.title}>{offer.title}</h2>
+            {isMobile ? <h2 className={s.price}>{offer.price}</h2> : <p className={s.tagline}>{offer.tagline}</p>}
+            {isMobile ? <p className={s.tagline}>{offer.tagline}</p> : <h2 className={s.price}>{offer.price}</h2>}
           </summary>
           <article className={s.description}>
             <div className={s.intro} dangerouslySetInnerHTML={{__html: offer.intro}} />
@@ -45,6 +47,11 @@ export default function Offer({offer}:OfferProps){
                 )
             })}
           </article>
+          <div className={s.buttonContainer}>
+            <div className={s.buttonBg}>
+              <Link className={s.button} href="/kontakt">Jetzt anfragen!</Link>
+            </div>
+          </div>
         </details>
     )
 }
