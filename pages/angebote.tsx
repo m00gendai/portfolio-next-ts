@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Offer from '@/components/Offer';
 
+
 interface Offer_part{
   title: string;
   description: string;
@@ -22,17 +23,17 @@ interface Offer_item{
 }
 
 interface OfferProps{
-  offers: Offer_item[]
+  offers: Offer_item[];
+  isMobile: boolean;
 }
 
-export default function Angebote({offers}:OfferProps) {
-
+export default function Angebote({offers, isMobile}:OfferProps) {
   return (
     <main className="main">
       <section className="section">
       <h1 className="title">Angebote</h1>
       {offers.map(offer=>{
-        return <Offer offer={offer} key={offer._id}/>
+        return <Offer offer={offer} key={offer._id} isMobile={isMobile}/>
       })}
       </section>
     </main>

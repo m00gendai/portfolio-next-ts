@@ -12,9 +12,29 @@
 
 .summary{
     list-style-type: none;
+    display: grid;
+}
+
+.summary:hover{
+    cursor: pointer;
+}
+
+.title{
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+}
+
+.tagline{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.price{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .description{
@@ -51,4 +71,31 @@
     color: deeppink;
     content: "\2022";
     display: inline-block;
+}
+
+.buttonContainer{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 0 0;
+}
+
+.buttonBg{
+    position: relative;
+    background: linear-gradient(315deg, blue, magenta);
+    padding: 0.25rem;
+    border-radius: 1rem;
+}
+
+.button{
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-size: 1.5rem;
 }
