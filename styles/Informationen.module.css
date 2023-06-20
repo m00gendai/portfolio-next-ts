@@ -1,0 +1,38 @@
+.container{
+    position: relative;
+    width: 100%;
+}
+
+.container:nth-last-child(n+2){
+    margin: 0 0 2rem 0;
+}
+
+.container:nth-last-child(n+2)::before{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    transform: translateY(50%);
+    height: 0.25rem;
+    content: "";
+    background: linear-gradient(090deg, deeppink, cyan);
+}
+
+.title{
+    color: cyan;
+}
+
+.text{
+    margin: 0 0 2rem 0;
+}
+
+.text ul{
+    list-style: none;
+}
+
+.text > ul li::before{
+    font-weight: bold;
+    width: 1rem;
+    color: deeppink;
+    content: "\2022";
+    display: inline-block;
+}
