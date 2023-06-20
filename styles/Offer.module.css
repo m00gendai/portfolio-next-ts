@@ -61,18 +61,6 @@
     margin: 3rem 0 0 0;
 }
 
-.part_description ul{
-    list-style: none;
-}
-
-.part_description > ul li::before{
-    font-weight: bold;
-    width: 1rem;
-    color: deeppink;
-    content: "\2022";
-    display: inline-block;
-}
-
 .buttonContainer{
     position: relative;
     width: 100%;
