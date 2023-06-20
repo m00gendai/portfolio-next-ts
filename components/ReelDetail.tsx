@@ -1,5 +1,7 @@
 import * as React from 'react';
 import s from '../styles/Reel.module.css';
+import { BiLinkExternal } from "react-icons/bi";
+import Link from 'next/link';
 
 interface Stack_entry {
   brand: string;
@@ -109,7 +111,7 @@ export default function ReelDetail({ fadeIn, index, project, grid }: Props) {
     >
       <div className={s.bigText}>
         <div className={s.title}>
-          <h2>{project.name}</h2>
+          <h2><Link className={s.link} href={project.url} target="_blank">{project.name}<BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></Link></h2>
           <p>{project.description}</p>
         </div>
         <div

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import s from '../styles/Reel.module.css';
 import ReelDetail from './ReelDetail';
+import Image from "next/image"
 
 interface Stack_entry {
   brand: string;
@@ -156,6 +157,14 @@ export default function Reel({ projects }: props) {
     }
   }
 
+  const imageStyle:React.CSSProperties = {
+    objectFit: "contain",
+    width: "100%",
+    height: "auto",
+    position: "absolute",
+    top: 0
+  }
+
   return (
     <div className={s.container} ref={container}>
       {projects.map((project: Project, index: number) => {
@@ -165,13 +174,15 @@ export default function Reel({ projects }: props) {
             key={`projectTile_${index}`}
             onClick={() => handleClick(index, project.url)}
           >
-            <div
-              className={s.inner}
-              style={project.image === null ? {backgroundImage: "none"} :{
-                backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${project.image.path}")`,
-              }}
-            >
-              {project.image === null ? project.name : null}
+            <div className={s.inner}>
+              <Image
+                src={`https://cms.mrweber.ch/storage/uploads/${project.image.path}`}
+                alt={project.name}
+                width={project.image.width}
+                height={project.image.height}
+                style={imageStyle}
+              >
+              </Image>
             </div>
           </div>
         );
