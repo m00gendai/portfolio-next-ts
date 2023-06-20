@@ -2,7 +2,7 @@ import Link from "next/link";
 import s from "../styles/TechStack.module.css"
 import d from "../styles/dialog.module.css"
 import { useRef, useState } from "react";
-import { BiLinkExternal } from "react-icons/bi";
+import { BiLinkExternal, BiXCircle } from "react-icons/bi";
 import Image from "next/image"
 
 interface TechStack_image{
@@ -43,7 +43,7 @@ interface TechProps{
 }
 
 export default function TechStack({tech, isMobile}:TechProps){
-console.log(isMobile)
+
     const dialog = useRef<HTMLDialogElement>(null);
 
     function handleOpen(){
@@ -68,7 +68,7 @@ console.log(isMobile)
             </div>
             <dialog className={d.container} ref={dialog}>
                 <div className={d.inner}>
-                    <button className={d.button} onClick={()=>handleClose()}>X</button>
+                    <button className={d.button} onClick={()=>handleClose()}><BiXCircle /></button>
                     <h2 className={d.title}><Link className={d.link} href={tech.url} target="_blank">{tech.brand}</Link><BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></h2>
                     {isMobile ? 
                     <div dangerouslySetInnerHTML={{__html: tech.excerpt}}></div> 

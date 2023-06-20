@@ -16,6 +16,10 @@
     aspect-ratio: 1/1;
 }
 
+.card:hover{
+    cursor: pointer;
+}
+
 .inner{
     width: 80%;
     aspect-ratio: 1/1;
