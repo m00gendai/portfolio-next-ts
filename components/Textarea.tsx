@@ -32,11 +32,8 @@ export default function Text({
     <div className={s.containerTextarea}>
       <label
         className={
-          focus[tag]
-            ? s.labelActive
-            : formValue[tag] !== '' && !focus[tag]
-            ? s.labelOk
-            : s.labelPassive
+         
+             s.labelActive
         }
         htmlFor={`${tag}`}
       >
@@ -46,27 +43,13 @@ export default function Text({
         name={`${tag}`}
         placeholder=""
         required
-        onFocus={(event) =>
-          setFocus({
-            ...focus,
-            [event.currentTarget.name]: !focus[event.currentTarget.name],
-          })
-        }
-        onBlur={(event) =>
-          setFocus({
-            ...focus,
-            [event.currentTarget.name]: !focus[event.currentTarget.name],
-          })
-        }
+     
         onChange={(event) =>
           setFormValue({ ...formValue, [tag]: event.currentTarget.value })
         }
         className={
-          focus[tag]
-            ? s.inputActive
-            : formValue[tag] !== '' && !focus[tag]
-            ? s.inputOk
-            : s.inputPassive
+          
+             s.inputActive
         }
       />
     </div>
