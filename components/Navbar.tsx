@@ -8,7 +8,7 @@ export default function Navbar(){
                 <Link className={s.link} href= "/">Home</Link>
                 <Link className={s.link} href= "/portfolio">Portfolio</Link>
                 <Link className={s.link} href= "/angebote">Angebote</Link>
-                <Link className={s.link} href= "/ueber">Über mich</Link>
+                <Link className={s.link} href= "/informationen">Informationen</Link>
                 <Link className={s.link} href= "/kontakt">Kontakt</Link>
             </div>
         </nav>
