@@ -8,6 +8,10 @@
     background:rgba(0, 0, 0, 0.7);
 }
 
+.container:hover{
+    cursor:auto;
+}
+
 .inner{
     position: relative;
     display: flex;
@@ -71,8 +75,20 @@
     grid-gap: 2rem;
 }
 
+@media only screen and (max-aspect-ratio: 13/9){
+    .grid{
+        display: flex;
+    }
+}
+
 .image{
     object-fit: contain;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+    .image{
+        display: none;
+    }
 }
 
 .notice{
