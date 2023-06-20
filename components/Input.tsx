@@ -45,19 +45,7 @@ export default function Input({
     <div className={s.containerInput}>
       <label
         className={
-          focus[tag]
-            ? s.labelActive
-            : formValue[tag] !== '' &&
-              formValue[tag] !== undefined &&
-              !focus[tag] &&
-              formValid[tag]
-            ? s.labelOk
-            : formValue[tag] !== '' &&
-              formValue[tag] !== undefined &&
-              !focus[tag] &&
-              !formValid[tag]
-            ? s.labelNotOk
-            : s.labelPassive
+           s.labelActive
         }
         htmlFor={`${tag}`}
       >
@@ -68,40 +56,22 @@ export default function Input({
         type={`${type}`}
         placeholder=""
         required={content[content.length - 1] === '*' ? true : false}
-        pattern={pattern === undefined ? null : `${pattern}`}
-        onFocus={(event) =>
-          setFocus({
-            ...focus,
-            [event.currentTarget.name]: !focus[event.currentTarget.name],
-          })
-        }
+        pattern={pattern === undefined ? undefined : `${pattern}`}
+  
         onBlur={(event) => {
           setFormValid({
             ...formValid,
             [event.currentTarget.name]: event.currentTarget.checkValidity(),
           });
-          setFocus({
-            ...focus,
-            [event.currentTarget.name]: !focus[event.currentTarget.name],
-          });
+
         }}
         onChange={(event) =>
           setFormValue({ ...formValue, [tag]: event.currentTarget.value })
         }
         className={
-          focus[tag]
-            ? s.inputActive
-            : formValue[tag] !== '' &&
-              formValue[tag] !== undefined &&
-              !focus[tag] &&
-              formValid[tag]
-            ? s.inputOk
-            : formValue[tag] !== '' &&
-              formValue[tag] !== undefined &&
-              !focus[tag] &&
-              !formValid[tag]
-            ? s.inputNotOk
-            : s.inputPassive
+          
+            s.inputActive
+            
         }
       />
     </div>
