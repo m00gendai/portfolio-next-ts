@@ -27,11 +27,15 @@
 
 .text ul{
     list-style: none;
+    margin: 0 0 0 -0.5rem;
 }
 
 .text > ul li::before{
+    position: absolute;
+    left: 1rem;
     font-weight: bold;
     width: 1rem;
+    height: 100%;
     color: deeppink;
     content: "\2022";
     display: inline-block;
