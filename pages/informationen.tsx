@@ -49,10 +49,9 @@ interface TechStack{
 interface InfoProps{
     infos: Information[];
     tech: TechStack[];
-    isMobile: boolean;
 }
 
-export default function Informationen({infos, tech, isMobile}:InfoProps) {
+export default function Informationen({infos, tech}:InfoProps) {
 
   return (
     <main className="main">
@@ -67,7 +66,7 @@ export default function Informationen({infos, tech, isMobile}:InfoProps) {
                     {info.title === "Die Technik" ? 
                         <div className={t.container}>
                             {tech.map((stack, index)=>{
-                                return <TechStack tech={stack} key={stack._id} isMobile={isMobile}/>})} 
+                                return <TechStack tech={stack} key={stack._id}/>})} 
                         </div> : null}
                     </div>
                 )

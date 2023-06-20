@@ -39,10 +39,9 @@ interface TechStack{
 
 interface TechProps{
     tech: TechStack;
-    isMobile: boolean;
 }
 
-export default function TechStack({tech, isMobile}:TechProps){
+export default function TechStack({tech}:TechProps){
 
     const dialog = useRef<HTMLDialogElement>(null);
 
@@ -70,9 +69,6 @@ export default function TechStack({tech, isMobile}:TechProps){
                 <div className={d.inner}>
                     <button className={d.button} onClick={()=>handleClose()}><BiXCircle /></button>
                     <h2 className={d.title}><Link className={d.link} href={tech.url} target="_blank">{tech.brand}</Link><BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></h2>
-                    {isMobile ? 
-                    <div dangerouslySetInnerHTML={{__html: tech.excerpt}}></div> 
-                    : 
                     <div className={d.grid}>
                         <Image 
                             className={d.image}
@@ -85,7 +81,7 @@ export default function TechStack({tech, isMobile}:TechProps){
                         </Image>
                         <div dangerouslySetInnerHTML={{__html: tech.excerpt}}>
                         </div>
-                    </div>}
+                    </div>
                     <p className={d.notice}>Die Beschreibungen wurden mit ChatGPT erstellt.</p>
                 </div>
             </dialog>
