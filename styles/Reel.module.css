@@ -29,12 +29,14 @@
   
   .inner {
     position: relative;
-    background-size: cover;
-    background-position:top;
-    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
   }
   
   .bigScreen {
@@ -110,12 +112,27 @@
   .title h2 {
     display: flex;
     align-items: center;
-    transition: 250ms;
     margin: 0 0 1rem 0;
+    width: 100%;
   }
   
+.title h2:hover{
+  cursor: pointer;
+    color: deeppink;
+}
+
   .title p {
     font-style: italic;
+  }
+
+  .link{
+    text-decoration: none;
+    color: white;
+  }
+
+  .link:hover{
+    cursor: pointer;
+    color: deeppink;
   }
   
   .bigText h2:hover {
