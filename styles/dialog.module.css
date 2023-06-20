@@ -1,0 +1,66 @@
+.container{
+    width: 90%;
+    background-image: linear-gradient(315deg, deeppink, blue);
+    padding: 0.25rem;
+}
+
+.container::backdrop{
+    background:rgba(0, 0, 0, 0.7);
+}
+
+.inner{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem 1rem 2rem;
+    color: white;
+}
+
+.button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.title{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+.link:hover{
+    cursor: pointer;
+    color: deeppink;
+}
+
+.title:hover{
+    cursor: pointer;
+    color: deeppink;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 2rem;
+}
+
+.image{
+    object-fit: contain;
+}
+
+.notice{
+    width: 100%;
+    border-top: 1px solid white;
+    font-style: italic;
+    padding: 1rem 0 0 0;
+}
