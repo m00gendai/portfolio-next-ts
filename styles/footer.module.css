@@ -1,0 +1,41 @@
+.footer{
+    position: relative;
+    background: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer::before{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    height: 0.25rem;
+    width: 100%;
+    background: linear-gradient(090deg, deeppink, cyan);
+    content: "";
+}
+
+.inner{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 1rem 0;
+}
+
+.links{
+    position: relative;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 0 0 2rem 0;
+}
+
+.item:hover{
+    background: blue;
+}
