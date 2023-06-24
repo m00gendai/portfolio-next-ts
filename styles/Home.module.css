@@ -1,0 +1,40 @@
+.spanL{
+    display: flex;
+    justify-content: flex-end;
+    animation-name: onoff;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 2.5s;
+}
+
+.spanR{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.span {
+    position: relative;
+    text-shadow: 2px 2px 5px blue, -2px -2px 5px blue, -2px 2px 5px deeppink, 2px -2px 5px deeppink;
+    font-size: 3rem;
+    width: 100%;
+}
+
+@keyframes onoff {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
