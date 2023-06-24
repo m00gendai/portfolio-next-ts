@@ -69,8 +69,3 @@ ul > li::before{
   content: "\2022";
   display: inline-block;
 }
-
-footer{
-  background:yellow;
-  width: 100%;
-}
