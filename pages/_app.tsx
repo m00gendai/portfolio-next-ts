@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   <>
   <Navbar />
   <Component {...pageProps} isMobile={isMobile}/>
+  <footer>Footer</footer>
   </>
   )
 }
