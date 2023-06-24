@@ -1,6 +1,28 @@
 import Head from 'next/head'
+import {useState, useEffect} from "react"
+import s from "@/styles/Home.module.css"
 
 export default function Home() {
+
+  const prefixes:string[] = ["Vereins", "Portfolio", "Club", "Betriebs", "Info", "Geschäfts", "Hobby", "Projekt"]
+  const [prefix, setPrefix] = useState<String>("Vereins")
+  const [prefixIndex, setPrefixIndex] = useState<number>(1)
+
+  useEffect(()=>{
+    const interval:NodeJS.Timer = setInterval(function(){
+      console.log(prefixIndex, prefixes.length-1)
+      if(prefixIndex === prefixes.length-1){
+        
+        setPrefixIndex(0)
+      } else {
+        setPrefixIndex(prefixIndex+1)
+      }
+      setPrefix(prefixes[prefixIndex])
+    },5000)
+    return () => clearInterval(interval)
+  },[prefixIndex])
+
+
   return (
     <>
       <Head>
@@ -10,7 +32,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        Frontpage
+        <section className="section">
+          <div className={s.splashText}>
+            <span className={s.span}>{`Ihre neue `}</span>
+            <div className={s.wrapper}>
+              <span className={`${s.spanL} ${s.span}`}>{prefix}</span>
+              <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   )
