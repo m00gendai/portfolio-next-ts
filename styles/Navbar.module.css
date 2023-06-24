@@ -11,7 +11,7 @@
 .nav::after{
     position: absolute;
     bottom: 0;
-    tranform: translateY(50%);
+    transform: translateY(50%);
     height: 0.25rem;
     width: 100%;
     background: linear-gradient(090deg, deeppink, cyan);
