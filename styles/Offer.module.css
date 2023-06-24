@@ -3,16 +3,18 @@
     width: 100%;
     border: 2px solid white;
     border-radius: 0.75rem;
-    padding: 1rem;
 }
 
 .details:nth-last-child(n+2){
+    position: relative;
     margin: 0 0 2rem 0;
 }
 
 .summary{
+    position: relative;
     list-style-type: none;
     display: grid;
+    margin: 1rem;
 }
 
 .summary:hover{
@@ -20,24 +22,28 @@
 }
 
 .title{
+    position:relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
 .tagline{
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
 .price{
+    position:relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
 .description{
+    margin: 1rem;
     position: relative;
     padding: 1rem 0 0 0;
 }
@@ -53,10 +59,12 @@
 }
 
 .intro{
+    position: relative;
     font-style: italic;
 }
 
 .part h4{
+    position: relative;
     color: cyan;
     margin: 3rem 0 0 0;
 }
@@ -66,7 +74,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 3rem 0 0 0;
+    margin: 3rem 0 3rem 0;
 }
 
 .buttonBg{
@@ -77,6 +85,7 @@
 }
 
 .button{
+    position: relative;
     padding: 1rem 2rem;
     display: flex;
     justify-content: center;
