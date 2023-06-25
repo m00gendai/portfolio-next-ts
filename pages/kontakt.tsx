@@ -129,7 +129,11 @@ export default function Kontakt(){
         setFormValue={setFormValue}
         setFocus={setFocus}
       />
-      <div className={s.buttonBg}><input type="submit" className={s.button} value="Abschicken" /></div>
+      <div className="buttonContainer">
+        <div className="buttonBg">
+          <input type="submit" className="button" value="Abschicken" />
+        </div>
+      </div>
       {feedbackVisible ? (
         <p style={{ color: feedback.color, width: "100%", textAlign: "center"}}>{feedback.content}</p>
       ) : null}
