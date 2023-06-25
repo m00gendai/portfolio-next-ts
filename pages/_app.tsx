@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import { useMediaQuery } from '@react-hook/media-query'
 import Link from "next/link"
 import {SiGithub, SiStackblitz, SiLinkedin, SiSololearn} from "react-icons/si"
+import React from 'react'
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -12,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const date: Date = new Date()
   const currentYear:number = date.getFullYear()
 
-  const iconStyle = {
+  const iconStyle: React.CSSProperties = {
     background: "white",
     fontSize: "2rem",
     padding: "0.5rem",
