@@ -11,6 +11,12 @@ export default function Navbar_Mobile(){
         setOpen(!open)
     }
 
+    function handleLink(){
+        setTimeout(function(){
+            setOpen(!open)
+        },400)
+    }
+
     return (
         <nav className={s.nav}>
             {open ? <GiKnifeFork
@@ -22,11 +28,11 @@ export default function Navbar_Mobile(){
                 onClick={()=>handleClick()}/>
             }
             {open ? <div className={s.inner}>
-                <Link className={s.link} href= "/">Home</Link>
-                <Link className={s.link} href= "/portfolio">Portfolio</Link>
-                <Link className={s.link} href= "/angebote">Angebote</Link>
-                <Link className={s.link} href= "/informationen">Informationen</Link>
-                <Link className={s.link} href= "/kontakt">Kontakt</Link>
+                <Link className={s.link} onClick={()=>handleLink()} href= "/">Home</Link>
+                <Link className={s.link} onClick={()=>handleLink()} href= "/portfolio">Portfolio</Link>
+                <Link className={s.link} onClick={()=>handleLink()} href= "/angebote">Angebote</Link>
+                <Link className={s.link} onClick={()=>handleLink()} href= "/informationen">Informationen</Link>
+                <Link className={s.link} onClick={()=>handleLink()} href= "/kontakt">Kontakt</Link>
             </div>
             :
             null}
