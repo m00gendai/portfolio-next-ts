@@ -16,6 +16,7 @@
     width: 100%;
     background: linear-gradient(090deg, deeppink, cyan);
     content: "";
+    z-index: 200;
 }
 
 .inner{
@@ -33,6 +34,5 @@
 .link{
     text-decoration: none;
     color: transparent;
-    
-
+    font-weight: bold;
 }
