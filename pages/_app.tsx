@@ -6,6 +6,7 @@ import { useMediaQuery } from '@react-hook/media-query'
 import Link from "next/link"
 import {SiGithub, SiStackblitz, SiLinkedin, SiSololearn} from "react-icons/si"
 import React from 'react'
+import Navbar_Mobile from '@/components/Navbar_Mobile'
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
   <>
-  <Navbar />
+  {isMobile ? <Navbar_Mobile /> : <Navbar />}
   <Component {...pageProps} isMobile={isMobile}/>
   <footer className={s.footer}>
     <div className={s.inner}>
