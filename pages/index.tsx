@@ -49,7 +49,7 @@ export default function Home() {
               <span className={`${s.spanL} ${s.span} ${s.animate }` }>{prefix}</span>
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
             </div>
-            <div className="buttonContainer">
+            <div className="buttonContainerDuo">
             <Link href="/angebote" className="buttonBg">
               <div className="button">
                 Angebote

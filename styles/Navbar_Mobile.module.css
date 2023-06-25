@@ -1,0 +1,46 @@
+.nav{
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: black;
+    flex-wrap: wrap;
+}
+
+.nav::after,
+.inner::after{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    height: 0.25rem;
+    width: 100%;
+    background: linear-gradient(090deg, deeppink, cyan);
+    content: "";
+    z-index: 200;
+}
+
+.inner{
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    background: black;
+    transform: translateY(calc(100% + 0.125rem));
+}
+
+.link{
+    position: relative;
+    width: 100%;
+    text-align: right;
+    text-decoration: none;
+    margin: 1rem;
+    font-size: 2rem;
+    font-weight:bold;
+    color: cyan;
+}
