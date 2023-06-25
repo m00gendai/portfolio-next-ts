@@ -69,30 +69,3 @@
     margin: 3rem 0 0 0;
 }
 
-.buttonContainer{
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 3rem 0 3rem 0;
-}
-
-.buttonBg{
-    position: relative;
-    background: linear-gradient(315deg, blue, magenta);
-    padding: 0.25rem;
-    border-radius: 1rem;
-}
-
-.button{
-    position: relative;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    color: white;
-    border-radius: 0.75rem;
-    text-decoration: none;
-    font-size: 1.5rem;
-}
