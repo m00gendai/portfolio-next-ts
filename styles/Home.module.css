@@ -1,0 +1,65 @@
+.splashText{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    height: calc(90vh - 4rem);
+}
+
+.span {
+    position: relative;
+    text-shadow: 2px 2px 5px blue, -2px -2px 5px blue, -2px 2px 5px deeppink, 2px -2px 5px deeppink;
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    margin: 5rem 0 0 0;
+}
+
+.wrapper{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.spanL{
+    justify-content: flex-end;
+    text-align: right;
+    margin: 0;
+}
+
+.spanR{
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    margin: 0;
+}
+
+.animate{
+    animation-name: onoff;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+
+
+
+@keyframes onoff {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
