@@ -47,7 +47,7 @@ export default function Offer({offer, isMobile}:OfferProps){
                 )
             })}
           </article>
-          <div className="buttonContainer">
+          <div className="buttonContainerSingle">
             <div className="buttonBg">
               <Link className="button" href="/kontakt">Jetzt anfragen!</Link>
             </div>
