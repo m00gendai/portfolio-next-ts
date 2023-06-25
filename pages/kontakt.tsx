@@ -129,7 +129,7 @@ export default function Kontakt(){
         setFormValue={setFormValue}
         setFocus={setFocus}
       />
-      <div className="buttonContainer">
+      <div className="buttonContainerSingle">
         <div className="buttonBg">
           <input type="submit" className="button" value="Abschicken" />
         </div>
