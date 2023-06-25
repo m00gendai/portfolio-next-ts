@@ -21,6 +21,16 @@
     cursor: pointer;
 }
 
+.chevy{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    color: cyan;
+}
+
 .title{
     position:relative;
     width: 100%;

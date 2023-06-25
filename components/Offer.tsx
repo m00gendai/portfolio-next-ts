@@ -1,5 +1,7 @@
 import s from "../styles/Offer.module.css"
 import Link from "next/link"
+import {BsChevronCompactDown, BsChevronCompactUp} from "react-icons/bs"
+import {useState} from "react"
 
 interface Offer_part{
     title: string;
@@ -28,12 +30,22 @@ interface Offer_part{
 
 export default function Offer({offer, isMobile}:OfferProps){
 
+  const [open, setOpen] = useState<boolean>(false)
+
+  function handleClick(){
+    setOpen(!open)
+  }
+
   return(
         <details className={s.details}>
-          <summary className={s.summary} style={isMobile ? {gridTemplateColumns:"1fr"} : {gridTemplateColumns: "2fr 3fr 1fr"}}>
+          <summary 
+            className={s.summary} style={isMobile ? {gridTemplateColumns:"1fr"} : {gridTemplateColumns: "2fr 3fr 1fr"}}
+            onClick={()=>handleClick()}
+          >
             <h2 className={s.title}>{offer.title}</h2>
             {isMobile ? <h2 className={s.price}>{offer.price}</h2> : <p className={s.tagline}>{offer.tagline}</p>}
             {isMobile ? <p className={s.tagline}>{offer.tagline}</p> : <h2 className={s.price}>{offer.price}</h2>}
+            <div className={s.chevy}>{open ? <BsChevronCompactUp /> : <BsChevronCompactDown />}</div>
           </summary>
           <article className={s.description}>
             <div className={s.intro} dangerouslySetInnerHTML={{__html: offer.intro}} />
