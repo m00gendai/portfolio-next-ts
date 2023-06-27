@@ -1,0 +1,60 @@
+.tileContainer{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.tile{
+    position: relative;
+    text-align: center;
+    border-radius: 1rem;
+    border: 2px solid white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contentContainer{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.field{
+    position: relative;
+    width: 100%;
+}
+
+.field:nth-last-child(n+2){
+    margin: 0 0 2rem 0;
+}
+
+.field:nth-last-child(n+2)::before{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    transform: translateY(50%);
+    height: 0.25rem;
+    content: "";
+    background: linear-gradient(090deg, deeppink, cyan);
+}
+
+.title{
+    position: relative;
+    width: 100%;
+}
+
+.text{
+    position: relative;
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.link{
+    position: relative;
+    width: 100%;
+    margin: -2rem 0 2rem 0;
+}
