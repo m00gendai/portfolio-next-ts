@@ -35,7 +35,7 @@ export default function Impressum({imprint}:ImprintProps){
                 <div className={s.tileContainer}> 
                     {imprint[0].tiles.map(tile=>{
                         return (
-                            <div className={s.tile}>
+                            <div className={s.tile} key={tile._id}>
                             <h3>{tile.title}</h3>
                             <div dangerouslySetInnerHTML={{__html:tile.address}}></div>
                             </div>
@@ -45,7 +45,7 @@ export default function Impressum({imprint}:ImprintProps){
                 <div className={s.contentContainer}>
                     {imprint[0].field.map(fld =>{
                         return (
-                            <div className={s.field}>
+                            <div className={s.field} key={fld.title}>
                                 <h3 className={s.title}>{fld.title}</h3>
                                 <div className={s.text} dangerouslySetInnerHTML={{__html: fld.content}}></div>
                             </div>
