@@ -12,7 +12,7 @@ export default function Error(){
             <section className="section">
                 <h1 className="title">Oha!</h1>
                 <div style={text}>
-    Diçka shkoi keq, kjo faqe nuk ekziston.
+    {`Diçka shkoi keq, kjo faqe nuk ekziston.
     Zerbait gaizki atera da, orrialde hau ez dago.
     Што-то пайшло не так, гэтай старонкі няма.
     Nešto je pošlo po zlu, ova stranica ne postoji.
@@ -27,9 +27,9 @@ export default function Error(){
     Midagi läks valesti, see leht ei eksisteeri.
     Jotain meni pieleen, tämä sivu ei ole olemassa.
     Quelque chose s'est mal passé, cette page n'existe pas.
-    Algo saiu mal, esta páxina non existe.
+    Algo saiu mal, esta páxina non existe.`}
     <span style={{color: "deeppink"}}>{` Da ging was schief, diese Seite existiert nicht. `}</span>
-    Κάτι πήγε στραβά, αυτή η σελίδα δεν υπάρχει.
+    {`Κάτι πήγε στραβά, αυτή η σελίδα δεν υπάρχει.
     Valami félrement, ez az oldal nem létezik.
     Eitthvað fór úrskeiðis, þessi síða er ekki til.
     Thit rud amach, níl an leathanach seo ann.
@@ -46,7 +46,7 @@ export default function Error(){
     Что-то пошло не так, эта страница не существует.
     Нешто је пошло по злу, ова страница не постоји.
     Niečo sa pokazilo, táto stránka neexistuje.
-    Nekaj je šlo narobe, ta stran ne obst.
+    Nekaj je šlo narobe, ta stran ne obst.`}
                 </div>
             </section>
         </main>
