@@ -12,6 +12,8 @@
     text-align: center;
     border-radius: 1rem;
     border: 2px solid white;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .contentContainer{
@@ -49,4 +51,10 @@
     position: relative;
     width: 100%;
     margin: 0 0 2rem 0;
+}
+
+.link{
+    position: relative;
+    width: 100%;
+    margin: -2rem 0 2rem 0;
 }

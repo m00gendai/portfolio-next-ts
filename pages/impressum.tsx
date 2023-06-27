@@ -1,8 +1,10 @@
 import s from "@/styles/Impressum.module.css"
+import Link from "next/link"
 
 interface Imprint_tile{
     title: string;
     address: string;
+    url: string;
     _model: string;
     _id: string;
 }
@@ -36,8 +38,9 @@ export default function Impressum({imprint}:ImprintProps){
                     {imprint[0].tiles.map(tile=>{
                         return (
                             <div className={s.tile} key={tile._id}>
-                            <h3>{tile.title}</h3>
-                            <div dangerouslySetInnerHTML={{__html:tile.address}}></div>
+                                <h3 className={s.title}>{tile.title}</h3>
+                                <div className={s.text} dangerouslySetInnerHTML={{__html:tile.address}}></div>
+                                <Link className={s.link} href={tile.url} target="_blank">{tile.url}</Link>
                             </div>
                         )
                     })}
