@@ -77,7 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
   <>
   <Header
       title={`mrweber ${page}`}
-      content={tag[0].line}
+      content={tag[0] ? tag[0].line : "Error"}
       url={path}
       image={""}
     />
