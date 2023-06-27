@@ -7,6 +7,13 @@ import Link from "next/link"
 import {SiGithub, SiStackblitz, SiLinkedin, SiSololearn} from "react-icons/si"
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
+import { NextRouter, useRouter } from 'next/router'
+import Header from '@/components/Header'
+
+interface content{
+  page: string;
+  line: string;
+}
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -23,8 +30,57 @@ export default function App({ Component, pageProps }: AppProps) {
     margin: "0 0.5rem"
   }
 
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+
+  const contentBag:content[] = [
+    {
+      page: "HOME",
+      line: "Ihre neue Webseite aus dem Schaffhauser Klettgau"
+    },
+    {
+      page: "PORTFOLIO",
+      line: "Eine Übersicht meiner Projekte"
+    },
+    {
+      page: "ANGEBOTE",
+      line: "Meine Webseiten-Angebote"
+    },
+    {
+      page: "INFORMATIONEN",
+      line: "Über mich, meine Fähigkeiten und die Technik"
+    },
+    {
+      page: "KONTAKT",
+      line: "Kontaktieren Sie mich unverbindlich!"
+    },
+    {
+      page: "IMPRESSUM",
+      line: "Impressum"
+    },
+    {
+      page: "DATENSCHUTZ",
+      line: "Datenschutzerklärung"
+    },
+    {
+      page: "404",
+      line: "ERROR ERROR ERROR"
+    },
+  ]
+
+  const tag:content[] = contentBag.filter(entry=>{
+    return entry.page === page
+  })
+
   return (
   <>
+  <Header
+      title={`mrweber ${page}`}
+      content={tag[0].line}
+      url={path}
+      image={""}
+    />
   {isMobile ? <Navbar_Mobile /> : <Navbar />}
   <Component {...pageProps} isMobile={isMobile}/>
   <footer className={s.footer}>
