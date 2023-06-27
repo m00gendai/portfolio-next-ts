@@ -37,6 +37,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Link href="https://www.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank"><SiLinkedin style={iconStyle}/></Link>
       <Link href="https://www.sololearn.com/Profile/19722744" target="_blank"><SiSololearn style={iconStyle}/></Link>
     </div>
+    <nav className={s.nav}>
+      <Link className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
+      <Link className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
+    </nav>
   </footer>
   </>
   )
