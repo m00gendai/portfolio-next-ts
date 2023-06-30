@@ -67,7 +67,7 @@ export async function getStaticProps(){
       'https://cms.mrweber.ch/api/content/items/imprint?populate=100',
       {
         headers: {
-          'api-key': 'API-773e67ee0ba102d8b93a74751560d8bdd07bd2cb',
+          'api-key': `${process.env.COCKPIT}`,
         },
       }
     )
