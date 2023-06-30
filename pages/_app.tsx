@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import '@/styles/globals.css'
 import s from "@/styles/footer.module.css"
+import c from "@/styles/Cookie.module.css"
 import type { AppProps } from 'next/app'
 import { useMediaQuery } from '@react-hook/media-query'
 import Link from "next/link"
@@ -9,6 +10,10 @@ import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { NextRouter, useRouter } from 'next/router'
 import Header from '@/components/Header'
+import {CookieConsent, getCookieConsentValue} from "react-cookie-consent";
+import { useState, useEffect} from "react"
+import * as ReactGA from "react-ga";
+
 
 interface content{
   page: string;
@@ -17,9 +22,25 @@ interface content{
 
 export default function App({ Component, pageProps }: AppProps) {
 
+  useEffect(() => {
+    const isConsent = getCookieConsentValue();
+    if (isConsent === "true") {
+      handleAcceptCookie();
+    }
+  }, []);
+
+  const initGA = (id: string) => {
+      ReactGA.initialize(id);
+  };
+  
+
   const isMobile:boolean = useMediaQuery('only screen and (max-aspect-ratio: 13/9)')
   const date: Date = new Date()
   const currentYear:number = date.getFullYear()
+
+  const handleAcceptCookie = () => {
+      initGA(`${process.env.NEXT_PUBLIC_GA}`)
+  };
 
   const iconStyle: React.CSSProperties = {
     background: "white",
@@ -98,6 +119,25 @@ export default function App({ Component, pageProps }: AppProps) {
       <Link className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
+  <CookieConsent
+  location="bottom"
+  buttonText="Okay!"
+  cookieName="mrwebersYummyCookie"
+  style={{background: "black"}}
+  containerClasses={c.bar}
+  contentClasses={c.inner}
+  buttonWrapperClasses={c.buttons}
+  buttonClasses={c.accept}
+  declineButtonClasses={c.decline}
+  enableDeclineButton
+  declineButtonText="Nein!"
+  onAccept={handleAcceptCookie}
+  disableStyles
+  disableButtonStyles
+>
+  Diese Webseite nutzt Cookies! <Link className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
+      <Link className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>{" "}
+</CookieConsent>
   </>
   )
 }
