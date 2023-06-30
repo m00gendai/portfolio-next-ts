@@ -33,9 +33,9 @@ export default function Home() {
         setPrefixIndex(prefixIndex+1)
       }
       setPrefix(prefixes[prefixIndex])
-    },5000)
+    },1000)
     return () => clearTimeout(interval);
-  }, []);
+  }, [prefix]);
   
 
   const background:React.CSSProperties = {
@@ -52,7 +52,7 @@ export default function Home() {
           <div className={s.splashText}>
             <span className={s.span}>{`Ihre neue `}</span>
             <div className={s.wrapper}>
-              <span className={`${s.spanL} ${s.span} ${s.animate }` }>{prefix}</span>
+              <span className={`${s.spanL} ${s.span}` }>{prefix}</span>
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
             </div>
             <div className="buttonContainerDuo">
