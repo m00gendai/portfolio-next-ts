@@ -1,0 +1,58 @@
+.bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.bar::before{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    height: 0.25rem;
+    width: 100%;
+    background: linear-gradient(090deg, deeppink, cyan);
+    content: "";
+    z-index: 200;
+}
+
+.inner{
+    position: relative;
+    width: auto;
+    height: 100%;
+    color: cyan;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons{
+    position: relative;
+    display: flex;
+    width: auto;
+    flex-wrap: nowrap;
+    width: 12rem;
+}
+
+.accept{
+    background: lime;
+    color: black;
+    flex: 1;
+    aspect-ratio: 21/10;
+    border: 0;
+    outline: 0;
+}
+
+.decline{
+    background: red;
+    color: white;
+    flex: 1;
+    aspect-ratio: 21/10;
+    border: 0;
+    outline: 0;
+    margin: 0 1rem;
+}
