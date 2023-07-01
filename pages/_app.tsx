@@ -5,14 +5,12 @@ import c from "@/styles/Cookie.module.css"
 import type { AppProps } from 'next/app'
 import { useMediaQuery } from '@react-hook/media-query'
 import Link from "next/link"
-import {SiGithub, SiStackblitz, SiLinkedin, SiSololearn} from "react-icons/si"
+import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn } from "react-icons/si"
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
-import { NextRouter, useRouter } from 'next/router'
-import Header from '@/components/Header'
-import {CookieConsent, getCookieConsentValue} from "react-cookie-consent";
-import { useState, useEffect} from "react"
-import * as ReactGA from "react-ga";
+import { CookieConsent, getCookieConsentValue } from "react-cookie-consent";
+import { useEffect } from "react"
+import ReactGA from "react-ga4";
 
 export default function App({ Component, pageProps }: AppProps){
   useEffect(() => {
