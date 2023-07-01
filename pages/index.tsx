@@ -2,8 +2,25 @@ import {useState, useEffect} from "react"
 import s from "@/styles/Home.module.css"
 import Link from "next/link"
 import TextTransition, { presets } from 'react-text-transition';
+import Header from "@/components/Header";
+import { NextRouter, useRouter } from "next/router";
 
-export default function Home() {
+interface tagline{
+  page: string;
+  line: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
+interface IndexProps{
+  taglines: tagline[];
+}
+
+export default function Home({taglines}:IndexProps) {
 
   const prefixes:string[] = [
     "Vereins", 
@@ -41,8 +58,22 @@ export default function Home() {
     backgroundPosition: "center",
   }
 
-  return (
-    <>
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+
+  const tag = taglines.filter(tagline=>{
+      return tagline.page.toUpperCase() === page
+  })
+
+return (
+  <>
+  <Header
+    title={`mrweber ${page}`}
+    content={tag[0].line}
+    url={path}
+    image={""}
+  />
       <main className="main">
         <section className="section" style={background}>
           <div className={s.splashText}>
@@ -74,4 +105,23 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getStaticProps(){
+const getTaglines: Response = await fetch(
+  'https://cms.mrweber.ch/api/content/items/taglines',
+  {
+    headers: {
+      'api-key': `${process.env.COCKPIT}`,
+    },
+  }
+)
+
+const taglines:tagline[] = await getTaglines.json()
+
+return{
+  props:{
+      taglines
+  }, revalidate: 10
+}
 }
