@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import s from "@/styles/Home.module.css"
 import Link from "next/link"
+import TextTransition, { presets } from 'react-text-transition';
 
 export default function Home() {
 
@@ -22,20 +23,15 @@ export default function Home() {
     "Musik",
   ]
   
-  const [prefix, setPrefix] = useState<String>("Vereins")
-  const [prefixIndex, setPrefixIndex] = useState<number>(1)
+  const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
-    const interval:NodeJS.Timer = setInterval(function(){
-      if(prefixIndex === prefixes.length-1){
-        setPrefixIndex(0)
-      } else {
-        setPrefixIndex(prefixIndex+1)
-      }
-      setPrefix(prefixes[prefixIndex])
-    },1000)
-    return () => clearTimeout(interval);
-  }, [prefix]);
+    const intervalId = setInterval(
+      () => setIndex((index) => index + 1),
+      3000, // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
   
 
   const background:React.CSSProperties = {
@@ -52,7 +48,13 @@ export default function Home() {
           <div className={s.splashText}>
             <span className={s.span}>{`Ihre neue `}</span>
             <div className={s.wrapper}>
-              <span className={`${s.spanL} ${s.span}` }>{prefix}</span>
+              <span className={`${s.spanL} ${s.span}` }>
+            <TextTransition 
+              inline 
+              springConfig={presets.slow} 
+              direction="up"
+              className={s.transition}
+            >{prefixes[index % prefixes.length]}</TextTransition></span>
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
             </div>
             <div className="buttonContainerDuo">

@@ -21,26 +21,41 @@
 .wrapper{
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
-.spanL{
-    text-align: right;
+.spanL{ 
     margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .spanR{
-    text-align: left;
+    width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.transition{
+    position: "relative";
+    width: "100%";
+    display: "flex";
+    justify-content: "flex-end";
 }
 
 @media only screen and (max-aspect-ratio: 13/9){
     .wrapper{
-        grid-template-columns: 1fr;
+        flex-wrap: wrap;
     }
     .spanL, .spanR{
-        text-align: center;
+        justify-content: center;
+    }
+    .transition{
+        justify-content: center;
     }
 }
 
