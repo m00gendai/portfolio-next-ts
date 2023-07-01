@@ -2,46 +2,72 @@ import Input from "@/components/Input";
 import Text from "@/components/Textarea"
 import { FormEvent, useState } from "react";
 import s from "@/styles/Kontakt.module.css"
+import { NextRouter, useRouter } from "next/router";
+import Header from "@/components/Header";
 
-export default function Kontakt(){
+interface isFocus {
+  name: boolean;
+  mail: boolean;
+  message: boolean;
+}
+
+interface isFormValue {
+  name: string;
+  mail: string;
+  message: string;
+}
+
+interface isFormValid {
+  name: boolean;
+  mail: boolean;
+  message: boolean;
+}
+
+interface isFeedback {
+  color: string;
+  content: string;
+}
+
+interface tagline{
+  page: string;
+  line: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
+interface KontaktProps{
+  taglines: tagline[];
+}
+
+
+export default function Kontakt({taglines}:KontaktProps){
     
-    interface isFocus {
-        name: boolean;
-        mail: boolean;
-        message: boolean;
-     }
+    
     const [focus, setFocus] = useState<isFocus>({
         name: false,
         mail: false,
         message: false,
     });
 
-    interface isFormValue {
-        name: string;
-        mail: string;
-        message: string;
-    }
+    
     const [formValue, setFormValue] = useState<isFormValue>({
         name: '',
         mail: '',
         message: '',
     });
 
-    interface isFormValid {
-        name: boolean;
-        mail: boolean;
-        message: boolean;
-    }
+    
     const [formValid, setFormValid] = useState<isFormValid>({
         name: false,
         mail: false,
         message: false,
     });
 
-    interface isFeedback {
-        color: string;
-        content: string;
-    }
+    
     const [feedbackVisible, setFeedbackVisible] = useState<boolean>(false);
     const [feedback, setFeedback] = useState<isFeedback>({
         color: '',
@@ -88,7 +114,22 @@ export default function Kontakt(){
         })
     }}
 
-    return(
+    const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+
+  const tag = taglines.filter(tagline=>{
+      return tagline.page.toUpperCase() === page
+  })
+
+return (
+  <>
+  <Header
+    title={`mrweber ${page}`}
+    content={tag[0].line}
+    url={path}
+    image={""}
+  />
         <main className="main">
             <section className="section">
                 <h1 className="title">Kontakt</h1>
@@ -142,5 +183,25 @@ export default function Kontakt(){
 
             </section>
         </main>
+        </>
     )
 }
+
+export async function getStaticProps(){
+  const getTaglines: Response = await fetch(
+    'https://cms.mrweber.ch/api/content/items/taglines',
+    {
+      headers: {
+        'api-key': `${process.env.COCKPIT}`,
+      },
+    }
+  )
+  
+  const taglines:tagline[] = await getTaglines.json()
+  
+  return{
+    props:{
+        taglines
+    }, revalidate: 10
+  }
+  }

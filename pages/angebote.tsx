@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Offer from '@/components/Offer';
+import { NextRouter, useRouter } from 'next/router';
+import Header from '@/components/Header';
 
 
 interface Offer_part{
@@ -22,13 +24,40 @@ interface Offer_item{
   _id: string;
 }
 
+interface tagline{
+  page: string;
+  line: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
 interface OfferProps{
   offers: Offer_item[];
   isMobile: boolean;
+  taglines: tagline[]
 }
 
-export default function Angebote({offers, isMobile}:OfferProps) {
+export default function Angebote({offers, isMobile, taglines}:OfferProps) {
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+
+  const tag = taglines.filter(tagline=>{
+    return tagline.page.toUpperCase() === page
+  })
+
   return (
+    <>
+    <Header
+      title={`mrweber ${page}`}
+      content={tag[0].line}
+      url={path}
+      image={""}
+    />
     <main className="main">
       <section className="section">
       <h1 className="title">Angebote</h1>
@@ -37,6 +66,7 @@ export default function Angebote({offers, isMobile}:OfferProps) {
       })}
       </section>
     </main>
+    </>
   );
 }
 
@@ -54,10 +84,22 @@ export async function getStaticProps(){
   
   const offers:Offer_item[] = await getOffers.json()
 
+  const getTaglines: Response = await fetch(
+    'https://cms.mrweber.ch/api/content/items/taglines',
+    {
+      headers: {
+        'api-key': `${process.env.COCKPIT}`,
+      },
+    }
+  )
+
+  const taglines:tagline[] = await getTaglines.json()
+
+
 
 return{
   props:{
-      offers
+      offers, taglines
   }, revalidate: 10
 }
 }

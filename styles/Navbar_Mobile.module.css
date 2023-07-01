@@ -44,3 +44,7 @@
     font-weight:bold;
     color: cyan;
 }
+
+.icon:hover{
+    cursor: pointer;
+}
