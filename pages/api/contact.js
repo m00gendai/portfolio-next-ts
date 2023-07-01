@@ -21,9 +21,9 @@ export default async function (req, res) {
   });
     
   const mailData = {
-      from: req.body.email,
+      from: req.body.mail,
       to: `info@mrweber.ch`,
-      cc: req.body.email,
+      cc: req.body.mail,
       subject: `mrweber: Nachricht von ${req.body.name}`,
       text: req.body.message,
       html: `<div>${req.body.message}</div>`
