@@ -30,7 +30,7 @@ export default function Datenschutz({dsgvo}:DatenschutzProps){
                     {dsgvo[0].chapter.map((item, index) =>{
                         return(
                             <div className={s.item} key={`${item.title}_${index}`}>
-                                <h3>{item.title}</h3>
+                                <h3 style={{wordBreak: "break-all"}}>{item.title}</h3>
                                 <div className={s.text} dangerouslySetInnerHTML={{__html: item.content}}></div>
                             </div>
                         )
