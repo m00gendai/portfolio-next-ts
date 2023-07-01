@@ -4,11 +4,13 @@ import { SetStateAction } from "react";
 interface isFormValue {
     name: string;
     mail: string;
+    subject: string;
     message: string;
   }
   interface isFocus {
     name: boolean;
     mail: boolean;
+    subject: boolean;
     message: boolean;
   }
 interface textareaProps {
