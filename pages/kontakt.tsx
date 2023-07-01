@@ -8,18 +8,21 @@ import Header from "@/components/Header";
 interface isFocus {
   name: boolean;
   mail: boolean;
+  subject: boolean;
   message: boolean;
 }
 
 interface isFormValue {
   name: string;
   mail: string;
+  subject: string;
   message: string;
 }
 
 interface isFormValid {
   name: boolean;
   mail: boolean;
+  subject: boolean
   message: boolean;
 }
 
@@ -50,6 +53,7 @@ export default function Kontakt({taglines}:KontaktProps){
     const [focus, setFocus] = useState<isFocus>({
         name: false,
         mail: false,
+        subject: false,
         message: false,
     });
 
@@ -57,6 +61,7 @@ export default function Kontakt({taglines}:KontaktProps){
     const [formValue, setFormValue] = useState<isFormValue>({
         name: '',
         mail: '',
+        subject: '',
         message: '',
     });
 
@@ -64,6 +69,7 @@ export default function Kontakt({taglines}:KontaktProps){
     const [formValid, setFormValid] = useState<isFormValid>({
         name: false,
         mail: false,
+        subject: false,
         message: false,
     });
 
@@ -79,6 +85,9 @@ export default function Kontakt({taglines}:KontaktProps){
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     
     event.preventDefault();
+    if(formValue.subject !== ""){
+      return
+    }
     if(cooldown){
         setFeedbackVisible(true);
         setFeedback({ color: 'red', content: 'Bitte warten SIe 10 Sekunden zwischen dem Senden.' });
@@ -161,7 +170,19 @@ return (
         setFormValid={setFormValid}
         setFormValue={setFormValue}
         setFocus={setFocus}
-      />
+      /><div style={{position: "absolute", left: "-100000px"}}>
+      <Input
+        tag="subject"
+        type="text"
+        content="Betreff"
+        pattern={undefined}
+        formValue={formValue}
+        focus={focus}
+        formValid={formValid}
+        setFormValid={setFormValid}
+        setFormValue={setFormValue}
+        setFocus={setFocus}
+      /></div>
       <Text
         tag="message"
         content="Nachricht *"
