@@ -2,6 +2,8 @@ import * as React from 'react';
 import s from "../styles/Informationen.module.css"
 import t from "../styles/TechStack.module.css"
 import TechStack from '@/components/TechStack';
+import { NextRouter, useRouter } from 'next/router';
+import Header from '@/components/Header';
 
 interface Information{
     title: string;
@@ -46,14 +48,40 @@ interface TechStack{
     _id: string;
 }
 
+interface tagline{
+  page: string;
+  line: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
 interface InfoProps{
     infos: Information[];
     tech: TechStack[];
+    taglines: tagline[];
 }
 
-export default function Informationen({infos, tech}:InfoProps) {
+export default function Informationen({infos, tech, taglines}:InfoProps) {
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
 
-  return (
+  const tag = taglines.filter(tagline=>{
+      return tagline.page.toUpperCase() === page
+  })
+
+return (
+  <>
+  <Header
+    title={`mrweber ${page}`}
+    content={tag[0].line}
+    url={path}
+    image={""}
+  />
     <main className="main">
       <section className="section">
         <h1 className="title">Informationen</h1>
@@ -74,6 +102,7 @@ export default function Informationen({infos, tech}:InfoProps) {
         }
       </section>
     </main>
+    </>
   );
 }
 
@@ -102,10 +131,21 @@ export async function getStaticProps(){
           )
           
           const tech:TechStack[] = await getTech.json()
+
+          const getTaglines: Response = await fetch(
+            'https://cms.mrweber.ch/api/content/items/taglines',
+            {
+              headers: {
+                'api-key': `${process.env.COCKPIT}`,
+              },
+            }
+          )
+          
+          const taglines:tagline[] = await getTaglines.json()
       
     return{
         props:{
-            infos, tech
+            infos, tech, taglines
         }, revalidate: 10
     }
 }

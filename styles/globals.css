@@ -123,3 +123,7 @@ ul > li::before{
   border: 0;
   flex-grow: 1;
 }
+
+.button:hover{
+  cursor: pointer;
+}

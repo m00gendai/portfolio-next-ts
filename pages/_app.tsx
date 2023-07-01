@@ -14,14 +14,7 @@ import {CookieConsent, getCookieConsentValue} from "react-cookie-consent";
 import { useState, useEffect} from "react"
 import * as ReactGA from "react-ga";
 
-
-interface content{
-  page: string;
-  line: string;
-}
-
-export default function App({ Component, pageProps }: AppProps) {
-
+export default function App({ Component, pageProps }: AppProps){
   useEffect(() => {
     const isConsent = getCookieConsentValue();
     if (isConsent === "true") {
@@ -32,7 +25,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const initGA = (id: string) => {
       ReactGA.initialize(id);
   };
-  
 
   const isMobile:boolean = useMediaQuery('only screen and (max-aspect-ratio: 13/9)')
   const date: Date = new Date()
@@ -51,57 +43,10 @@ export default function App({ Component, pageProps }: AppProps) {
     margin: "0 0.5rem"
   }
 
-  const router: NextRouter = useRouter()
-  const path:string = `https://www.mrweber.ch${router.pathname}`
-  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
-
-  const contentBag:content[] = [
-    {
-      page: "HOME",
-      line: "Ihre neue Webseite aus dem Schaffhauser Klettgau"
-    },
-    {
-      page: "PORTFOLIO",
-      line: "Eine Übersicht meiner Projekte"
-    },
-    {
-      page: "ANGEBOTE",
-      line: "Meine Webseiten-Angebote"
-    },
-    {
-      page: "INFORMATIONEN",
-      line: "Über mich, meine Fähigkeiten und die Technik"
-    },
-    {
-      page: "KONTAKT",
-      line: "Kontaktieren Sie mich unverbindlich!"
-    },
-    {
-      page: "IMPRESSUM",
-      line: "Impressum"
-    },
-    {
-      page: "DATENSCHUTZ",
-      line: "Datenschutzerklärung"
-    },
-    {
-      page: "404",
-      line: "ERROR ERROR ERROR"
-    },
-  ]
-
-  const tag:content[] = contentBag.filter(entry=>{
-    return entry.page === page
-  })
-
+  
   return (
   <>
-  <Header
-      title={`mrweber ${page}`}
-      content={tag[0] ? tag[0].line : "Error"}
-      url={path}
-      image={""}
-    />
+  
   {isMobile ? <Navbar_Mobile /> : <Navbar />}
   <Component {...pageProps} isMobile={isMobile}/>
   <footer className={s.footer}>

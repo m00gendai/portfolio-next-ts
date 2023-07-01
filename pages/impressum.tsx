@@ -1,5 +1,7 @@
+import Header from "@/components/Header";
 import s from "@/styles/Impressum.module.css"
 import Link from "next/link"
+import { NextRouter, useRouter } from "next/router";
 
 interface Imprint_tile{
     title: string;
@@ -25,12 +27,39 @@ interface Imprint{
     _id: string;
 }
 
+interface tagline{
+    page: string;
+    line: string;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _state: number;
+    _cby: string;
+    _id: string;
+  }
+
 interface ImprintProps{
     imprint:Imprint[];
+    taglines: tagline[];
 }
 
-export default function Impressum({imprint}:ImprintProps){
-    return(
+export default function Impressum({imprint, taglines}:ImprintProps){
+    const router: NextRouter = useRouter()
+    const path:string = `https://www.mrweber.ch${router.pathname}`
+    const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+
+    const tag = taglines.filter(tagline=>{
+        return tagline.page.toUpperCase() === page
+    })
+
+  return (
+    <>
+    <Header
+      title={`mrweber ${page}`}
+      content={tag[0].line}
+      url={path}
+      image={""}
+    />
         <main className="main">
             <section className="section">
                 <h1 className="title">Impressum</h1>
@@ -57,6 +86,7 @@ export default function Impressum({imprint}:ImprintProps){
                 </div>
             </section>
         </main>
+        </>
     )
 }
 
@@ -73,11 +103,23 @@ export async function getStaticProps(){
     )
     
     const imprint:Imprint[] = await getProjects.json()
+
+    const getTaglines: Response = await fetch(
+        'https://cms.mrweber.ch/api/content/items/taglines',
+        {
+          headers: {
+            'api-key': `${process.env.COCKPIT}`,
+          },
+        }
+      )
+    
+      const taglines:tagline[] = await getTaglines.json()
+  
   
 
 return{
     props:{
-        imprint
+        imprint, taglines
     }, revalidate: 10
 }
 }
