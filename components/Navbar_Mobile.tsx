@@ -21,11 +21,13 @@ export default function Navbar_Mobile(){
         <nav className={s.nav}>
             {open ? <GiKnifeFork
                 style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "cyan"}}
-                onClick={()=>handleClick()}/>
+                onClick={()=>handleClick()}
+                className={s.icon}/>
             :
             <GiHamburger 
                 style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "deeppink"}}
-                onClick={()=>handleClick()}/>
+                onClick={()=>handleClick()}
+                className={s.icon}/>
             }
             {open ? <div className={s.inner}>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/">Home</Link>
