@@ -14,7 +14,7 @@ import ReactGA from "react-ga4";
 
 export default function App({ Component, pageProps }: AppProps){
   useEffect(() => {
-    const isConsent = getCookieConsentValue();
+    const isConsent = getCookieConsentValue("mrwebersYummyCookie");
     if (isConsent === "true") {
       handleAcceptCookie();
     }
