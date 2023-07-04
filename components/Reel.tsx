@@ -162,7 +162,8 @@ export default function Reel({ projects }: props) {
     width: "100%",
     height: "auto",
     position: "absolute",
-    top: 0
+    top: 0,
+    zIndex: 999,
   }
 
   return (
@@ -182,7 +183,8 @@ export default function Reel({ projects }: props) {
                 height={project.image.height}
                 style={imageStyle}
               >
-              </Image>
+        </Image>
+              <div className={s.fallback}>{project.name}</div>
             </div>
           </div>
         );
