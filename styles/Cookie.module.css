@@ -8,6 +8,7 @@
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+    z-index:9999;
 }
 
 .bar::before{
