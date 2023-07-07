@@ -54,7 +54,7 @@ export default function Datenschutz({dsgvo, taglines}:DatenschutzProps){
     />
         <main className="main">
             <section className="section">
-                <h1 className="title">Datenschutzerklärung</h1>
+                <h1 className="title">Daten<wbr/>schutz<wbr/>erklärung</h1>
                 <div className={s.container}>
                     {dsgvo[0].chapter.map((item, index) =>{
                         return(
