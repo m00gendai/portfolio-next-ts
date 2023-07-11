@@ -31,7 +31,7 @@ interface tagline{
   }
 
 interface DatenschutzProps{
-    dsgvo: Dsgvo[]
+    dsgvo: Dsgvo[];
     taglines: tagline[];
 }
 
