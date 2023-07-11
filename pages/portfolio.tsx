@@ -83,15 +83,30 @@ interface tagline{
   _id: string;
 }
 
+interface Info{
+  intro: string;
+  projects: string;
+  apps: string;
+  demos: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
 interface Props{
     projects: Project[];
+    demos: Project[];
     taglines: tagline[];
+    info: Info[];
 }
 
 const DynamicReel = dynamic(()=>import('../components/Reel'),{
 ssr: false,})
 
-export default function Portfolio({projects, taglines}:Props) {
+export default function Portfolio({projects, demos, info, taglines}:Props) {
   
   const router: NextRouter = useRouter()
   const path:string = `https://www.mrweber.ch${router.pathname}`
@@ -100,7 +115,7 @@ export default function Portfolio({projects, taglines}:Props) {
   const tag = taglines.filter(tagline=>{
     return tagline.page.toUpperCase() === page
   })
-
+console.log(info)
   return (
     <>
     <Header
@@ -113,7 +128,14 @@ export default function Portfolio({projects, taglines}:Props) {
     <main className="main">
       <section className="section">
         <h1 className="title">Portfolio</h1>
+        <div className="description" dangerouslySetInnerHTML={{__html: info[0].intro}}></div>
+        <h2>Webseiten</h2>
+        <div className="description" dangerouslySetInnerHTML={{__html: info[0].projects}}></div>
         <DynamicReel projects={projects} />
+        <div className="divider"></div>
+        <h2>Demos & Beispiele</h2>
+        <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
+        <DynamicReel projects={demos} />
       </section>
     </main>
     </>
@@ -134,6 +156,28 @@ export async function getStaticProps(){
         
         const projects:Project[] = await getProjects.json()
 
+        const getDemos: Response = await fetch(
+          'https://cms.mrweber.ch/api/content/items/demos?populate=100',
+          {
+            headers: {
+              'api-key': `${process.env.COCKPIT}`,
+            },
+          }
+        )
+        
+        const demos:Project[] = await getDemos.json()
+
+        const getInfo: Response = await fetch(
+          'https://cms.mrweber.ch/api/content/items/projectInfos?populate=100',
+          {
+            headers: {
+              'api-key': `${process.env.COCKPIT}`,
+            },
+          }
+        )
+        
+        const info:Info = await getInfo.json()
+
         const getTaglines: Response = await fetch(
           'https://cms.mrweber.ch/api/content/items/taglines',
           {
@@ -148,7 +192,7 @@ export async function getStaticProps(){
 
     return{
         props:{
-            projects, taglines
+            projects, demos, info, taglines
         }, revalidate: 10
     }
 }

@@ -31,7 +31,7 @@ interface tagline{
   }
 
 interface DatenschutzProps{
-    dsgvo: Dsgvo[]
+    dsgvo: Dsgvo[];
     taglines: tagline[];
 }
 
@@ -42,6 +42,10 @@ export default function Datenschutz({dsgvo, taglines}:DatenschutzProps){
 
     const tag = taglines.filter(tagline=>{
         return tagline.page.toUpperCase() === page
+    })
+    
+    const data: Dsgvo[] = dsgvo.filter(id =>{
+      return id._id === "a4a3140f61356473710002e5"
     })
 
   return (
@@ -56,7 +60,7 @@ export default function Datenschutz({dsgvo, taglines}:DatenschutzProps){
             <section className="section">
                 <h1 className="title">Daten<wbr/>schutz<wbr/>erklärung</h1>
                 <div className={s.container}>
-                    {dsgvo[0].chapter.map((item, index) =>{
+                    {data[0].chapter.map((item, index) =>{
                         return(
                             <div className={s.item} key={`${item.title}_${index}`}>
                                 <h3 style={{wordBreak: "break-all"}}>{item.title}</h3>
