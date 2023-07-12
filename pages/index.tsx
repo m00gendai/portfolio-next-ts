@@ -78,17 +78,18 @@ export default function Home({taglines}:IndexProps) {
       <main className="main">
         <section className="section" style={background}>
           <div className={s.splashText}>
-            <span className={s.span}>{`Ihre neue `}</span>
-            <div className={s.wrapper}>
+            <h1 className={s.title}>
+              <span className={s.span}>{`Ihre neue `}</span>
               <span className={`${s.spanL} ${s.span}` }>
-            <TextTransition 
-              inline 
-              springConfig={presets.slow} 
-              direction="up"
-              className={s.transition}
-            >{prefixes[index % prefixes.length]}</TextTransition></span>
+                <TextTransition 
+                  inline 
+                  springConfig={presets.slow} 
+                  direction="up"
+                  className={s.transition}
+                >{prefixes[index % prefixes.length]}</TextTransition>
+              </span>
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
-            </div>
+            </h1>
             <div className="buttonContainerDuo">
             <Link href="/angebote" className="buttonBg">
               <div className="button">
