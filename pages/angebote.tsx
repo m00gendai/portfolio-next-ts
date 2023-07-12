@@ -26,7 +26,8 @@ interface Offer_item{
 
 interface tagline{
   page: string;
-  line: string;
+  title: string;
+  description: string;
   _modified: number;
   _mby: string;
   _created: number;
@@ -53,8 +54,8 @@ export default function Angebote({offers, isMobile, taglines}:OfferProps) {
   return (
     <>
     <Header
-      title={`mrweber ${page}`}
-      content={tag[0].line}
+      title={`${tag[0].title}`}
+      content={tag[0].description}
       url={path}
       image={""}
     />

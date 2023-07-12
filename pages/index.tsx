@@ -7,7 +7,8 @@ import { NextRouter, useRouter } from "next/router";
 
 interface tagline{
   page: string;
-  line: string;
+  title: string;
+  description: string;
   _modified: number;
   _mby: string;
   _created: number;
@@ -63,31 +64,32 @@ export default function Home({taglines}:IndexProps) {
   const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
 
   const tag = taglines.filter(tagline=>{
-      return tagline.page.toUpperCase() === page
+    return tagline.page.toUpperCase() === page
   })
 
-return (
-  <>
-  <Header
-    title={`mrweber ${page}`}
-    content={tag[0].line}
-    url={path}
-    image={""}
-  />
+  return (
+    <>
+    <Header
+      title={`${tag[0].title}`}
+      content={tag[0].description}
+      url={path}
+      image={""}
+    />
       <main className="main">
         <section className="section" style={background}>
           <div className={s.splashText}>
-            <span className={s.span}>{`Ihre neue `}</span>
-            <div className={s.wrapper}>
+            <h1 className={s.title}>
+              <span className={s.span}>{`Ihre neue `}</span>
               <span className={`${s.spanL} ${s.span}` }>
-            <TextTransition 
-              inline 
-              springConfig={presets.slow} 
-              direction="up"
-              className={s.transition}
-            >{prefixes[index % prefixes.length]}</TextTransition></span>
+                <TextTransition 
+                  inline 
+                  springConfig={presets.slow} 
+                  direction="up"
+                  className={s.transition}
+                >{prefixes[index % prefixes.length]}</TextTransition>
+              </span>
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
-            </div>
+            </h1>
             <div className="buttonContainerDuo">
             <Link href="/angebote" className="buttonBg">
               <div className="button">

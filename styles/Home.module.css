@@ -8,6 +8,18 @@
     height: calc(90vh - 4rem);
 }
 
+.title{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-clip:initial;
+    background: transparent;
+    color: white;
+}
+
 .span {
     position: relative;
     text-shadow: 2px 2px 5px blue, -2px -2px 5px blue, -2px 2px 5px deeppink, 2px -2px 5px deeppink;
@@ -18,23 +30,15 @@
     color: var(--background);
 }
 
-.wrapper{
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-}
-
 .spanL{ 
     margin: 0;
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: flex-end;
 }
 
 .spanR{
-    width: 100%;
+    width: 50%;
     margin: 0;
     display: flex;
     justify-content: flex-start;
@@ -53,6 +57,7 @@
     }
     .spanL, .spanR{
         justify-content: center;
+        width: 100%;
     }
     .transition{
         justify-content: center;
