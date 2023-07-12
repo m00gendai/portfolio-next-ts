@@ -111,7 +111,7 @@ export default function ReelDetail({ fadeIn, index, project, grid }: Props) {
     >
       <div className={s.bigText}>
         <div className={s.title}>
-          <h2><Link className={s.link} href={project.url} target="_blank">{project.name}<BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></Link></h2>
+          <h2><Link className={s.link} href={project.url} target="_blank" title={project.name}>{project.name}<BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></Link></h2>
           <p>{project.description}</p>
         </div>
         <div
