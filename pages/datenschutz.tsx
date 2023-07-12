@@ -21,7 +21,8 @@ interface Dsgvo{
 
 interface tagline{
     page: string;
-    line: string;
+    title: string;
+    description: string;
     _modified: number;
     _mby: string;
     _created: number;
@@ -36,26 +37,26 @@ interface DatenschutzProps{
 }
 
 export default function Datenschutz({dsgvo, taglines}:DatenschutzProps){
-    const router: NextRouter = useRouter()
-    const path:string = `https://www.mrweber.ch${router.pathname}`
-    const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
 
-    const tag = taglines.filter(tagline=>{
-        return tagline.page.toUpperCase() === page
-    })
+  const tag = taglines.filter(tagline=>{
+    return tagline.page.toUpperCase() === page
+  })
     
     const data: Dsgvo[] = dsgvo.filter(id =>{
       return id._id === "a4a3140f61356473710002e5"
     })
 
-  return (
-    <>
-    <Header
-      title={`mrweber ${page}`}
-      content={tag[0].line}
-      url={path}
-      image={""}
-    />
+    return (
+      <>
+      <Header
+        title={`${tag[0].title}`}
+        content={tag[0].description}
+        url={path}
+        image={""}
+      />
         <main className="main">
             <section className="section">
                 <h1 className="title">Daten<wbr/>schutz<wbr/>erklärung</h1>

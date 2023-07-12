@@ -7,7 +7,8 @@ import { NextRouter, useRouter } from "next/router";
 
 interface tagline{
   page: string;
-  line: string;
+  title: string;
+  description: string;
   _modified: number;
   _mby: string;
   _created: number;
@@ -63,17 +64,17 @@ export default function Home({taglines}:IndexProps) {
   const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
 
   const tag = taglines.filter(tagline=>{
-      return tagline.page.toUpperCase() === page
+    return tagline.page.toUpperCase() === page
   })
 
-return (
-  <>
-  <Header
-    title={`mrweber ${page}`}
-    content={tag[0].line}
-    url={path}
-    image={""}
-  />
+  return (
+    <>
+    <Header
+      title={`${tag[0].title}`}
+      content={tag[0].description}
+      url={path}
+      image={""}
+    />
       <main className="main">
         <section className="section" style={background}>
           <div className={s.splashText}>
