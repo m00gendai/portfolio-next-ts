@@ -68,7 +68,7 @@ export default function TechStack({tech}:TechProps){
             <dialog className={d.container} ref={dialog}>
                 <div className={d.inner}>
                     <button className={d.button} onClick={()=>handleClose()}><BiXCircle /></button>
-                    <h2 className={d.title}><Link className={d.link} href={tech.url} target="_blank">{tech.brand}</Link><BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></h2>
+                    <h2 className={d.title}><Link className={d.link} href={tech.url} target="_blank" title={tech.brand}>{tech.brand}</Link><BiLinkExternal style={{margin: "0 0 0 0.5rem"}}/></h2>
                     <div className={d.grid}>
                         <Image 
                             className={d.image}

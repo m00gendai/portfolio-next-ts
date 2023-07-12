@@ -91,12 +91,12 @@ export default function Home({taglines}:IndexProps) {
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
             </h1>
             <div className="buttonContainerDuo">
-            <Link href="/angebote" className="buttonBg">
+            <Link href="/angebote" className="buttonBg" title="Angebote">
               <div className="button">
                 Angebote
               </div>
             </Link>
-            <Link href="/portfolio" className="buttonBg">
+            <Link href="/portfolio" className="buttonBg" title="Portfolio">
               <div className="button">
                 Portfolio
               </div>

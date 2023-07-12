@@ -52,14 +52,14 @@ export default function App({ Component, pageProps }: AppProps){
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
     </div>
     <div className={s.links}>
-      <Link href="https://www.github.com/m00gendai" target="_blank"><SiGithub style={iconStyle}/></Link>
-      <Link href="https://www.stackblitz.com/@m00gendai" target="_blank"><SiStackblitz style={iconStyle}/></Link>
-      <Link href="https://www.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank"><SiLinkedin style={iconStyle}/></Link>
-      <Link href="https://www.sololearn.com/Profile/19722744" target="_blank"><SiSololearn style={iconStyle}/></Link>
+      <Link title="Github" href="https://www.github.com/m00gendai" target="_blank"><SiGithub style={iconStyle}/></Link>
+      <Link title="Stackblitz" href="https://www.stackblitz.com/@m00gendai" target="_blank"><SiStackblitz style={iconStyle}/></Link>
+      <Link title="LinkedIn" href="https://www.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank"><SiLinkedin style={iconStyle}/></Link>
+      <Link title="Sololearn" href="https://www.sololearn.com/Profile/19722744" target="_blank"><SiSololearn style={iconStyle}/></Link>
     </div>
     <nav className={s.nav}>
-      <Link className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
-      <Link className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
+      <Link title="Impressum" className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
+      <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
   <CookieConsent
@@ -78,8 +78,8 @@ export default function App({ Component, pageProps }: AppProps){
   disableStyles
   disableButtonStyles
 >
-  Diese Webseite nutzt Cookies! <Link className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
-      <Link className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>{" "}
+  Diese Webseite nutzt Cookies! <Link title="Impressum" className={`${s.link} ${s.left}`} href="/impressum">Impressum</Link>
+      <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>{" "}
 </CookieConsent>
   </>
   )
