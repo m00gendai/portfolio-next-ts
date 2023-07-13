@@ -132,11 +132,11 @@ export default function Portfolio({projects, demos, info, taglines}:Props) {
         <div className="description" dangerouslySetInnerHTML={{__html: info[0].intro}}></div>
         <h2>Webseiten</h2>
         <div className="description" dangerouslySetInnerHTML={{__html: info[0].projects}}></div>
-        <DynamicReel projects={projects} />
+        <DynamicReel projects={projects} id={`live`}/>
         <div className="divider"></div>
         <h2>Demos & Beispiele</h2>
         <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
-        <DynamicReel projects={demos} />
+        <DynamicReel projects={demos} id={`demo`}/>
       </section>
     </main>
     </>
