@@ -28,7 +28,7 @@
     width: 100%;
     grid-column: 1 / -1;
     font-size: 2rem;
-    color: cyan;
+    color: var(--mainBlue);
 }
 
 .title{
@@ -65,7 +65,7 @@
     transform: translateY(-50%);
     height: 0.25rem;
     content: "";
-    background: linear-gradient(090deg, deeppink, cyan);
+    background: var(--linear-090-mainBlue-mainRed);
 }
 
 .intro{
@@ -75,7 +75,7 @@
 
 .part h4{
     position: relative;
-    color: cyan;
+    color: var(--mainBlue);
     margin: 3rem 0 0 0;
 }
 
