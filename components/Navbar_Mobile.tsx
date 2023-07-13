@@ -12,9 +12,8 @@ export default function Navbar_Mobile(){
     }
 
     function handleLink(){
-        setTimeout(function(){
             setOpen(!open)
-        },400)
+
     }
 
     return (
@@ -25,7 +24,7 @@ export default function Navbar_Mobile(){
                 className={s.icon}/>
             :
             <GiHamburger 
-                style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "deeppink"}}
+                style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "magenta"}}
                 onClick={()=>handleClick()}
                 className={s.icon}/>
             }
