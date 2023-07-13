@@ -128,6 +128,7 @@ export default function ReelDetail({ fadeIn, index, project, grid, id }: Props) 
                   backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${entry.stack.image.path}")`,
                 }}
                 title={`${entry.stack.brand}`}
+                key={entry.stack._id}
               ></div>
             ) : null;
           })}
