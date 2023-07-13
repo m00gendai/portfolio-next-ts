@@ -72,6 +72,12 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
   const path:string = `https://www.mrweber.ch${router.pathname}`
   const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
 
+  const techSorted: TechStack[] = tech.sort((a,b)=>{
+    const x: string = a.brand.toLowerCase()
+    const y: string = b.brand.toLowerCase()
+    return x > y ? 1 : x < y ? -1 : 0
+  })
+
   const tag = taglines.filter(tagline=>{
     return tagline.page.toUpperCase() === page
   })
@@ -95,7 +101,7 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
                     <div className={s.text} dangerouslySetInnerHTML={{__html: info.text}}></div>
                     {info.title === "Die Technik" ? 
                         <div className={t.container}>
-                            {tech.map((stack, index)=>{
+                            {techSorted.map((stack, index)=>{
                                 return <TechStack tech={stack} key={stack._id}/>})} 
                         </div> : null}
                     </div>
