@@ -14,12 +14,12 @@
     transform: translateY(50%);
     height: 0.25rem;
     content: "";
-    background: linear-gradient(090deg, deeppink, cyan);
+    background: var(--linear-090-main);
 }
 
 .title{
     position: relative;
-    color: cyan;
+    color: var(--mainBlue);
 }
 
 .text{

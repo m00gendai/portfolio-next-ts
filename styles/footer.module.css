@@ -14,7 +14,7 @@
     transform: translateY(-50%);
     height: 0.25rem;
     width: 100%;
-    background: linear-gradient(090deg, deeppink, cyan);
+    background: var(--linear-090-mainRed-mainBlue);
     content: "";
 }
 
@@ -34,10 +34,6 @@
     justify-content: center;
     align-items:center;
     margin: 0
-}
-
-.item:hover{
-    background: blue;
 }
 
 .nav{

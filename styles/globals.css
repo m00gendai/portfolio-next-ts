@@ -1,3 +1,17 @@
+:root{
+  --mainBlue: cyan;
+  --minorBlue: blue;
+  --mainRed: magenta;
+  --minorRed: hotpink;
+  --linear-090-mainBlue-mainRed: linear-gradient(090deg, var(--mainBlue), var(--mainRed));
+  --linear-090-mainRed-mainBlue: linear-gradient(090deg, var(--mainRed), var(--mainBlue));
+  --dialog: linear-gradient(315deg, var(--mainRed), var(--minorBlue));
+  --blue-tile: linear-gradient(315deg, var(--minorBlue), var(--mainBlue));
+  --red-tile: linear-gradient(315deg, var(--minorRed), var(--mainRed));
+  --button: linear-gradient(315deg, var(--minorBlue), var(--mainRed));
+    --button: linear-gradient(315deg, var(--minorBlue), var(--mainRed));
+}
+
 body{
   width: 100%;
   height: 100vh;
@@ -44,7 +58,7 @@ body{
 
 h1{
   width: fit-content;
-  background: linear-gradient(090deg, cyan, deeppink);
+  background: var(--linear-090-mainBlue-mainRed);
   color: transparent;
   font-size: 3rem;
 }
@@ -78,7 +92,7 @@ ul > li::before{
   font-weight: bold;
   width: 1rem;
   height: 100%;
-  color: deeppink;
+  color: var(--mainRed);
   content: "\2022";
   display: inline-block;
 }
@@ -108,12 +122,25 @@ ul > li::before{
 
 .buttonBg{
   position: relative;
-  background: linear-gradient(315deg, blue, magenta);
+  background: var(--button);
   padding: 0.25rem;
   border-radius: 1rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
+}
+
+.buttonBg::before{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border-radius: 1rem;
+  background: var(--button);
+  filter: blur(10px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .buttonBg:hover{
@@ -145,5 +172,5 @@ ul > li::before{
   width: 100%;
   margin: 3rem 0;
   height: 0.25rem;
-  background: linear-gradient(090deg, deeppink, cyan);
+  background: var(--linear-090-mainBlue-mainRed);
 }
