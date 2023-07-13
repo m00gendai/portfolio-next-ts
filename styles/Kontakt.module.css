@@ -79,13 +79,14 @@
 .containerInput label,
 .containerTextarea label {
   position: absolute;
-
-  top: 0;
+  top: 1.5rem;
   left: 1rem;
     color: white;
   transition: 0.5s;
   background: black;
-  padding: 0 0.25rem 0 0.25rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 0 0 0 0.25rem;
 }
 
 .containerInput input,
@@ -95,11 +96,11 @@
   z-index: 3;
   transition: 0.5s;
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: 'Arial';
   flex: 1;
   background: black;
-  padding: 1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
   margin: 0.25rem;
   color: white;
   height: 100%;
