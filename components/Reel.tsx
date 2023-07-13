@@ -78,9 +78,10 @@ interface Project {
 
 interface props {
   projects: Project[];
+  id: string;
 }
 
-export default function Reel({ projects }: props) {
+export default function Reel({ projects, id }: props) {
   /*
     This ref references the grid container
   */
@@ -128,7 +129,7 @@ export default function Reel({ projects }: props) {
       setOpen(true);
       setFadeIn(true);
       setTimeout(function () {
-        document.getElementById('bigscreen')?.scrollIntoView({
+        document.getElementById(`bigscreen_${id}`)?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'center',
@@ -148,7 +149,7 @@ export default function Reel({ projects }: props) {
     // if the text box is visible but the newly clicked element is on a new row, it moves the text box accordingly and scrolls it into view
     if (open && indx != index) {
       setTimeout(function () {
-        document.getElementById('bigscreen')?.scrollIntoView({
+        document.getElementById(`bigscreen_${id}`)?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'center',
@@ -195,6 +196,7 @@ export default function Reel({ projects }: props) {
           index={indx}
           project={projects[indx]}
           grid={grid}
+          id={id}
         />
       ) : null}
     </div>

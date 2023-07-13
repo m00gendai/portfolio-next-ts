@@ -80,9 +80,10 @@ interface Props {
   index: number;
   project: Project;
   grid: number[];
+  id: string;
 }
 
-export default function ReelDetail({ fadeIn, index, project, grid }: Props) {
+export default function ReelDetail({ fadeIn, index, project, grid, id }: Props) {
   const gridCol: number = grid[0];
   const gridRow: number = grid[1]; // This is not really used but fun to know anyways
 
@@ -101,7 +102,7 @@ export default function ReelDetail({ fadeIn, index, project, grid }: Props) {
   return (
     <div
       className={`${s.bigScreen} ${fadeIn ? s.fadeIn : s.fadeOut}`}
-      id="bigscreen"
+      id={`bigscreen_${id}`}
       style={{
         gridRowStart: rowPosition + 1,
         gridRowEnd: rowPosition + 2,
