@@ -16,7 +16,7 @@
     transform: translateY(50%);
     height: 0.25rem;
     width: 100%;
-    background: linear-gradient(090deg, deeppink, cyan);
+    background: var(--linear-090-mainRed-mainBlue);
     content: "";
     z-index: 200;
 }
@@ -42,7 +42,7 @@
     margin: 1rem;
     font-size: 2rem;
     font-weight:bold;
-    color: cyan;
+    color: var(--mainBlue);
 }
 
 .icon:hover{

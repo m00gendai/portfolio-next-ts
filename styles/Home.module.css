@@ -22,12 +22,12 @@
 
 .span {
     position: relative;
-    text-shadow: 2px 2px 5px blue, -2px -2px 5px blue, -2px 2px 5px deeppink, 2px -2px 5px deeppink;
+    text-shadow: 2px 2px 5px var(--minorBlue), -2px -2px 5px var(--minorBlue), -2px 2px 5px var(--minorRed), 2px -2px 5px var(--minorRed);
     font-size: 3rem;
     width: 100%;
     text-align: center;
     margin: 5rem 0 0 0;
-    color: var(--background);
+    color: white;
 }
 
 .spanL{ 
