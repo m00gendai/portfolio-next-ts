@@ -69,6 +69,10 @@ h2{
   margin: 0;
 }
 
+a{
+  color: var(--mainBlue);
+}
+
 .title{
   background-clip: text;
   -webkit-background-clip: text;
