@@ -178,3 +178,29 @@ ul > li::before{
   height: 0.25rem;
   background: var(--linear-090-mainBlue-mainRed);
 }
+
+.imageSpan{
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.imageSpan::before{
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  content: "";
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+  .imageSpan{
+    height: 25vw;
+  }
+}

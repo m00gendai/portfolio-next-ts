@@ -4,10 +4,36 @@ import t from "../styles/TechStack.module.css"
 import TechStack from '@/components/TechStack';
 import { NextRouter, useRouter } from 'next/router';
 import Header from '@/components/Header';
+import Image from "next/image"
+
+interface Asset{
+  path: string;
+  title: string;
+  mime: string;
+  type: string;
+  description: string;
+  tags: string[];
+  size: number;
+  colors: string[];
+  width: number;
+  height: number;
+  _hash: string;
+  _created: number;
+  _modified: number;
+  _cby: string;
+  folder: string;
+  _id: string;
+}
+
+interface Content{
+text: string;
+asset: Asset[];
+}
 
 interface Information{
     title: string;
     text: string;
+    content: Content[];
     _modified: number;
     _mby: string;
     _created: number;
@@ -16,29 +42,11 @@ interface Information{
     _id: string;
 }
 
-interface TechStack_image{
-    path: string;
-    title: string;
-    mime: string;
-    type: string;
-    description: string;
-    tags: string[];
-    size: number;
-    colors: string[];
-    width: number;
-    height: number;
-    _hash: string;
-    _created: number;
-    _modified: number;
-    _cby: string;
-    folder: string;
-    _id: string;
-}
 interface TechStack{
     brand: string;
     url: string;
     excerpt: string;
-    image: TechStack_image;
+    image: Asset;
     Bildquelle: string;
     _modified: number;
     _mby: string;
@@ -98,7 +106,23 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
                 return(
                     <div className={s.container} key={info._id}>
                     <h2 className={s.title}>{info.title}</h2>
-                    <div className={s.text} dangerouslySetInnerHTML={{__html: info.text}}></div>
+                    {info.content?.map(content=>{
+                      return (
+                      <>
+                        <div className={s.text} dangerouslySetInnerHTML={{__html: content.text}}></div>
+                        {content.asset?.map(asset=>{
+                          return (
+                            <div className="imageSpan"
+                              style={{
+                                backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${asset.path}")`
+                              }}
+                            >
+                            </div>
+                          )
+                        })}
+                      </>)
+                    })}
+                   
                     {info.title === "Die Technik" ? 
                         <div className={t.container}>
                             {techSorted.map((stack, index)=>{
