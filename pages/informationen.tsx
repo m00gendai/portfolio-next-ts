@@ -116,14 +116,7 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
                       return (
                         <figure key={`image_${asset._id}`}>
                           <ParallaxBanner className="parallax">
-                            <ParallaxBannerLayer speed={-20}>
-                              <div className="imageSpan"
-                                style={{
-                                  backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${asset.path}")`
-                                }}
-                              >
-                              </div>
-                            </ParallaxBannerLayer>
+                            <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${asset.path}`} speed={-20} />
                           </ParallaxBanner>
                           <figcaption dangerouslySetInnerHTML={{__html: asset.description}}></figcaption>
                         </figure> 
