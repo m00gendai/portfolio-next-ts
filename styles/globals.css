@@ -179,28 +179,34 @@ ul > li::before{
   background: var(--linear-090-mainBlue-mainRed);
 }
 
-.imageSpan{
+.parallax{
   position: relative;
   width: 100%;
   height: 50vh;
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.imageSpan::before{
-  position: absolute;
+.imageSpan{
+  position: relative;
   width: 100%;
-  height: 120%;
-  content: "";
+  height: 100%;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(10px);
 }
 
 @media only screen and (max-aspect-ratio: 13/9){
-  .imageSpan{
+  .parallax{
     height: 25vw;
   }
+}
+
+figure{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figcaption{
+  font-size: 0.75rem;
+  font-style: italic;
 }
