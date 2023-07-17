@@ -26,6 +26,7 @@
     "react-ga": "^3.3.1",
     "react-ga4": "^2.1.0",
     "react-icons": "^4.9.0",
+    "react-scroll-parallax": "^3.4.2",
     "react-text-transition": "^3.1.0",
     "typescript": "5.1.3"
   }

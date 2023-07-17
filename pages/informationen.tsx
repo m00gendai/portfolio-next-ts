@@ -4,48 +4,57 @@ import t from "../styles/TechStack.module.css"
 import TechStack from '@/components/TechStack';
 import { NextRouter, useRouter } from 'next/router';
 import Header from '@/components/Header';
+import Divider from '@/components/Divider';
+import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
+
+interface Asset{
+  path: string;
+  title: string;
+  mime: string;
+  type: string;
+  description: string;
+  tags: string[];
+  size: number;
+  colors: string[];
+  width: number;
+  height: number;
+  _hash: string;
+  _created: number;
+  _modified: number;
+  _cby: string;
+  folder: string;
+  _id: string;
+}
+
+interface Content{
+  text: string;
+  asset: Asset[];
+}
 
 interface Information{
-    title: string;
-    text: string;
-    _modified: number;
-    _mby: string;
-    _created: number;
-    _state: number;
-    _cby: string;
-    _id: string;
+  title: string;
+  text: string;
+  content: Content[];
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
 }
 
-interface TechStack_image{
-    path: string;
-    title: string;
-    mime: string;
-    type: string;
-    description: string;
-    tags: string[];
-    size: number;
-    colors: string[];
-    width: number;
-    height: number;
-    _hash: string;
-    _created: number;
-    _modified: number;
-    _cby: string;
-    folder: string;
-    _id: string;
-}
 interface TechStack{
-    brand: string;
-    url: string;
-    excerpt: string;
-    image: TechStack_image;
-    Bildquelle: string;
-    _modified: number;
-    _mby: string;
-    _created: number;
-    _state: number;
-    _cby: string;
-    _id: string;
+  brand: string;
+  url: string;
+  excerpt: string;
+  image: Asset;
+  Bildquelle: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
 }
 
 interface tagline{
@@ -61,9 +70,9 @@ interface tagline{
 }
 
 interface InfoProps{
-    infos: Information[];
-    tech: TechStack[];
-    taglines: tagline[];
+  infos: Information[];
+  tech: TechStack[];
+  taglines: tagline[];
 }
 
 export default function Informationen({infos, tech, taglines}:InfoProps) {
@@ -94,19 +103,57 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
       <section className="section">
         <h1 className="title">Informationen</h1>
         {
-            infos.map(info=>{
-                return(
-                    <div className={s.container} key={info._id}>
-                    <h2 className={s.title}>{info.title}</h2>
-                    <div className={s.text} dangerouslySetInnerHTML={{__html: info.text}}></div>
-                    {info.title === "Die Technik" ? 
-                        <div className={t.container}>
-                            {techSorted.map((stack, index)=>{
-                                return <TechStack tech={stack} key={stack._id}/>})} 
-                        </div> : null}
+          infos.map((info, index)=>{
+            return(
+              <React.Fragment key={`section_${info._id}`}>
+              <div className={s.container} key={info._id}>
+                <h2 className={s.title} key={`title_${info._id}`}>{info.title}</h2>
+                {info.content?.map((content, index)=>{
+                  return (
+                    <React.Fragment key={`text_${index}`}>
+                    <div  className={s.text} dangerouslySetInnerHTML={{__html: content.text}}></div>
+                    {content.asset?.map(asset=>{
+                      return (
+                        <figure key={`image_${asset._id}`}>
+                          <ParallaxBanner className="parallax">
+                            <ParallaxBannerLayer speed={-20}>
+                              <div className="imageSpan"
+                                style={{
+                                  backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${asset.path}")`
+                                }}
+                              >
+                              </div>
+                            </ParallaxBannerLayer>
+                          </ParallaxBanner>
+                          <figcaption dangerouslySetInnerHTML={{__html: asset.description}}></figcaption>
+                        </figure> 
+                      )
+                    })}
+                    </React.Fragment>
+                  )
+                })}
+                {
+                  info.title === "Die Technik" ? 
+                    <div className={t.container}>
+                      {
+                        techSorted.map((stack, index)=>{
+                          return <TechStack tech={stack} key={stack._id}/>
+                        })
+                      } 
                     </div>
-                )
-            })
+                  :
+                    null
+                }
+              </div>
+              {
+                index+1 < infos.length ? 
+                  <Divider key={`divider_${info._id}`}/> 
+                : 
+                  null
+              }
+              </React.Fragment>
+            )
+          })
         }
       </section>
     </main>
