@@ -11,6 +11,7 @@ import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { CookieConsent, getCookieConsentValue } from "react-cookie-consent";
 import { useEffect } from "react"
 import ReactGA from "react-ga4";
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 export default function App({ Component, pageProps }: AppProps){
   useEffect(() => {
@@ -46,7 +47,9 @@ export default function App({ Component, pageProps }: AppProps){
   <>
   
   {isMobile ? <Navbar_Mobile /> : <Navbar />}
+  <ParallaxProvider>
   <Component {...pageProps} isMobile={isMobile}/>
+  </ParallaxProvider>
   <footer className={s.footer}>
     <div className={s.inner}>
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
