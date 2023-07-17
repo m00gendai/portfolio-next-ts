@@ -4,7 +4,8 @@ import t from "../styles/TechStack.module.css"
 import TechStack from '@/components/TechStack';
 import { NextRouter, useRouter } from 'next/router';
 import Header from '@/components/Header';
-import Image from "next/image"
+import Divider from '@/components/Divider';
+import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 
 interface Asset{
   path: string;
@@ -102,25 +103,35 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
       <section className="section">
         <h1 className="title">Informationen</h1>
         {
-            infos.map(info=>{
+            infos.map((info, index)=>{
                 return(
+                  <React.Fragment key={`section_${info._id}`}>
                     <div className={s.container} key={info._id}>
-                    <h2 className={s.title}>{info.title}</h2>
-                    {info.content?.map(content=>{
+                    <h2 className={s.title} key={`title_${info._id}`}>{info.title}</h2>
+                    {info.content?.map((content, index)=>{
                       return (
-                      <>
-                        <div className={s.text} dangerouslySetInnerHTML={{__html: content.text}}></div>
+                      <React.Fragment key={`text_${index}`}>
+                        <div  className={s.text} dangerouslySetInnerHTML={{__html: content.text}}></div>
                         {content.asset?.map(asset=>{
                           return (
+                            
+                            <figure key={`image_${asset._id}`}>
+                              <ParallaxBanner className="parallax">
+                              <ParallaxBannerLayer speed={-20}>
                             <div className="imageSpan"
                               style={{
                                 backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${asset.path}")`
                               }}
                             >
                             </div>
+                            </ParallaxBannerLayer>
+                            </ParallaxBanner>
+                            <figcaption dangerouslySetInnerHTML={{__html: asset.description}}></figcaption>
+                            </figure>
+                            
                           )
                         })}
-                      </>)
+                      </React.Fragment>)
                     })}
                    
                     {info.title === "Die Technik" ? 
@@ -129,6 +140,8 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
                                 return <TechStack tech={stack} key={stack._id}/>})} 
                         </div> : null}
                     </div>
+                    {index+1 < infos.length ? <Divider key={`divider_${info._id}`}/> : null}
+                    </React.Fragment>
                 )
             })
         }
