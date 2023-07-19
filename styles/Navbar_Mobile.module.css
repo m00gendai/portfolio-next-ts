@@ -9,6 +9,12 @@
     flex-wrap: wrap;
 }
 
+@media only screen and (min-aspect-ratio: 13/9){
+    .nav{
+        display: none;
+    }
+}
+
 .nav::after,
 .inner::after{
     position: absolute;

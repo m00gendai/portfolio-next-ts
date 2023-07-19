@@ -3,7 +3,6 @@ import '@/styles/globals.css'
 import s from "@/styles/footer.module.css"
 import c from "@/styles/Cookie.module.css"
 import type { AppProps } from 'next/app'
-import { useMediaQuery } from '@react-hook/media-query'
 import Link from "next/link"
 import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn } from "react-icons/si"
 import React from 'react'
@@ -25,7 +24,6 @@ export default function App({ Component, pageProps }: AppProps){
       ReactGA.initialize(id);
   };
 
-  const isMobile:boolean = useMediaQuery('only screen and (max-aspect-ratio: 13/9)')
   const date: Date = new Date()
   const currentYear:number = date.getFullYear()
 
@@ -46,9 +44,10 @@ export default function App({ Component, pageProps }: AppProps){
   return (
   <>
   
-  {isMobile ? <Navbar_Mobile /> : <Navbar />}
+  <Navbar_Mobile /> 
+  <Navbar />
   <ParallaxProvider>
-  <Component {...pageProps} isMobile={isMobile}/>
+  <Component {...pageProps}/>
   </ParallaxProvider>
   <footer className={s.footer}>
     <div className={s.inner}>

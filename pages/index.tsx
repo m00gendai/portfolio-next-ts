@@ -61,8 +61,7 @@ export default function Home({taglines}:IndexProps) {
 
   const router: NextRouter = useRouter()
   const path:string = `https://www.mrweber.ch${router.pathname}`
-  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
-
+  const page: string = router.pathname.replace("/", "").toUpperCase() === "" ? "HOME" : router.pathname.replace("/", "").toUpperCase()
   const tag = taglines.filter(tagline=>{
     return tagline.page.toUpperCase() === page
   })
@@ -76,7 +75,7 @@ export default function Home({taglines}:IndexProps) {
       image={""}
     />
       <main className="main">
-        <section className="section" style={background}>
+        <section className="homeSection" style={background}>
           <div className={s.splashText}>
             <h1 className={s.title}>
               <span className={s.span}>{`Ihre neue `}</span>
