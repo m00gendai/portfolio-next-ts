@@ -79,8 +79,7 @@ export default function Informationen({infos, tech, taglines}:InfoProps) {
   
   const router: NextRouter = useRouter()
   const path:string = `https://www.mrweber.ch${router.pathname}`
-  const page: string = router.asPath.replace("/", "").toUpperCase() === "" ? "HOME" : router.asPath.replace("/", "").toUpperCase()
-
+  const page: string = router.pathname.replace("/", "").toUpperCase() === "" ? "HOME" : router.pathname.replace("/", "").toUpperCase()
   const techSorted: TechStack[] = tech.sort((a,b)=>{
     const x: string = a.brand.toLowerCase()
     const y: string = b.brand.toLowerCase()
