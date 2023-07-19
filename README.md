@@ -5,3 +5,4 @@ Refer to interfaces for Model Schema.
 
 Contact form needs corresponding webserver settings configured and SMTP password as an environment variable.
 
+Dependencies see ```package.json```.
