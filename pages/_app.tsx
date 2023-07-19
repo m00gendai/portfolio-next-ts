@@ -4,7 +4,7 @@ import s from "@/styles/footer.module.css"
 import c from "@/styles/Cookie.module.css"
 import type { AppProps } from 'next/app'
 import Link from "next/link"
-import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn } from "react-icons/si"
+import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "react-icons/si"
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { CookieConsent, getCookieConsentValue } from "react-cookie-consent";
@@ -57,6 +57,7 @@ export default function App({ Component, pageProps }: AppProps){
       <Link title="Github" href="https://www.github.com/m00gendai" target="_blank"><SiGithub style={iconStyle}/></Link>
       <Link title="Stackblitz" href="https://www.stackblitz.com/@m00gendai" target="_blank"><SiStackblitz style={iconStyle}/></Link>
       <Link title="LinkedIn" href="https://www.linkedin.com/in/marcel-weber-3a05a61bb" target="_blank"><SiLinkedin style={iconStyle}/></Link>
+      <Link title="Facebook" href="https://www.facebook.com/profile.php?id=100094533625419" target="_blank"><SiFacebook style={iconStyle}/></Link>
       <Link title="Sololearn" href="https://www.sololearn.com/Profile/19722744" target="_blank"><SiSololearn style={iconStyle}/></Link>
     </div>
     <nav className={s.nav}>
