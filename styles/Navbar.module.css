@@ -8,6 +8,12 @@
     background: black;
 }
 
+@media only screen and (max-aspect-ratio: 13/9){
+    .nav{
+        display: none;
+    }
+}
+
 .nav::after{
     position: absolute;
     bottom: 0;
