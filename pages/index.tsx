@@ -75,7 +75,7 @@ export default function Home({taglines}:IndexProps) {
       image={""}
     />
       <main className="main">
-        <section className="section" style={background}>
+        <section className="homeSection" style={background}>
           <div className={s.splashText}>
             <h1 className={s.title}>
               <span className={s.span}>{`Ihre neue `}</span>
