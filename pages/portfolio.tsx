@@ -100,14 +100,17 @@ interface Info{
 interface Props{
     projects: Project[];
     demos: Project[];
+    apps: Project[];
     taglines: tagline[];
     info: Info[];
 }
 
 const DynamicReel = dynamic(()=>import('../components/Reel'),{
 ssr: false,})
+const DynamicReelPortrait = dynamic(()=>import('../components/Reel_portrait'),{
+  ssr: false,})
 
-export default function Portfolio({projects, demos, info, taglines}:Props) {
+export default function Portfolio({projects, demos, apps, info, taglines}:Props) {
   
   const router: NextRouter = useRouter()
   const path:string = `https://www.mrweber.ch${router.pathname}`
@@ -136,6 +139,10 @@ export default function Portfolio({projects, demos, info, taglines}:Props) {
         <h2>Demos & Beispiele</h2>
         <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
         <DynamicReel projects={demos} id={`demo`}/>
+        <div className="divider"></div>
+        <h2>Webapplikationen</h2>
+        <div className="description" dangerouslySetInnerHTML={{__html: info[0].apps}}></div>
+        <DynamicReelPortrait projects={apps} id={`apps`}/>
       </section>
     </main>
     </>
@@ -178,6 +185,17 @@ export async function getStaticProps(){
         
         const info:Info = await getInfo.json()
 
+        const getApps: Response = await fetch(
+          'https://cms.mrweber.ch/api/content/items/ProjekteMobile?populate=100',
+          {
+            headers: {
+              'api-key': `${process.env.COCKPIT}`,
+            },
+          }
+        )
+        
+        const apps:Project[] = await getApps.json()
+
         const getTaglines: Response = await fetch(
           'https://cms.mrweber.ch/api/content/items/taglines',
           {
@@ -192,7 +210,7 @@ export async function getStaticProps(){
 
     return{
         props:{
-            projects, demos, info, taglines
+            projects, demos, apps, info, taglines
         }, revalidate: 10
     }
 }
