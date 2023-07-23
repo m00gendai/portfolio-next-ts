@@ -47,6 +47,17 @@ body{
   flex-wrap: nowrap;
 }
 
+.homeMain{
+  width: 100%;
+  max-width: 1920px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .homeSection{
   position: relative;
   width: 100%;

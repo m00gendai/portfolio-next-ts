@@ -36,7 +36,9 @@ export default function Home({taglines}:IndexProps) {
     "Unternehmens",
     "Veranstaltungs",
     "Medien",
+    "WordPress",
     "Foto",
+    "ClubDesk",
     "Video",
     "Musik",
   ]
@@ -45,7 +47,7 @@ export default function Home({taglines}:IndexProps) {
 
   useEffect(() => {
     const intervalId = setInterval(
-      () => setIndex((index) => index + 1),
+      () => setIndex((index) => Math.floor(Math.random() * (prefixes.length-1 - 0 + 1) + 0)),
       3000, // every 3 seconds
     );
     return () => clearTimeout(intervalId);
@@ -66,6 +68,8 @@ export default function Home({taglines}:IndexProps) {
     return tagline.page.toUpperCase() === page
   })
 
+  const ctaText: string = `Überzeugen Sie sich von meinem <a href="/portfolio">Portfolio</a> und <a href="/kontakt">kontaktieren</a> Sie mich!`
+
   return (
     <>
     <Header
@@ -74,7 +78,7 @@ export default function Home({taglines}:IndexProps) {
       url={path}
       image={""}
     />
-      <main className="main">
+      <main className="homeMain">
         <section className="homeSection" style={background}>
           <div className={s.splashText}>
             <h1 className={s.title}>
@@ -102,7 +106,14 @@ export default function Home({taglines}:IndexProps) {
             </Link>
           </div>
           </div>
+          
         </section>
+        <span className={s.whackyWavingInflatableArmsFlailingTubeMan}>
+          <p>{`Ansprechende Webseiten aus regionalem Anbau für Vereine, Organisationen, Persönlichkeiten, KMUs und vieles mehr.`}</p>
+          <p>{`mrweber.ch ist nicht nur Webdesign, sondern auch Webentwicklung.` }</p>
+          <p>{`Von WordPress über ClubDesk bis zur handgemachten Massarbeit mit JavaScript/TypeScript, React und Next.js.`}</p>
+          <p dangerouslySetInnerHTML={{__html: ctaText}}></p>
+        </span>
       </main>
     </>
   )
