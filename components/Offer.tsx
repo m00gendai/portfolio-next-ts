@@ -25,10 +25,9 @@ interface Offer_part{
 
   interface OfferProps{
     offer: Offer_item;
-    isMobile: boolean;
   }
 
-export default function Offer({offer, isMobile}:OfferProps){
+export default function Offer({offer}:OfferProps){
 
   const [open, setOpen] = useState<boolean>(false)
 
@@ -39,12 +38,14 @@ export default function Offer({offer, isMobile}:OfferProps){
   return(
         <details className={s.details}>
           <summary 
-            className={s.summary} style={isMobile ? {gridTemplateColumns:"1fr"} : {gridTemplateColumns: "2fr 3fr 1fr"}}
+            className={s.summary}
             onClick={()=>handleClick()}
           >
             <h2 className={s.title}>{offer.title}</h2>
-            {isMobile ? <h2 className={s.price}>{offer.price}</h2> : <p className={s.tagline}>{offer.tagline}</p>}
-            {isMobile ? <p className={s.tagline}>{offer.tagline}</p> : <h2 className={s.price}>{offer.price}</h2>}
+            <h2 className={`${s.price} ${s.mobile}`}>{offer.price}</h2>
+            <p className={`${s.tagline} ${s.mobile}`}>{offer.tagline}</p>
+            <p className={`${s.tagline} ${s.desktop}`}>{offer.tagline}</p>
+            <h2 className={`${s.price} ${s.desktop}`}>{offer.price}</h2>
             <div className={s.chevy}>{open ? <BsChevronCompactUp /> : <BsChevronCompactDown />}</div>
           </summary>
           <article className={s.description}>

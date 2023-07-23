@@ -17,6 +17,17 @@
     margin: 1rem;
 }
 
+@media only screen and (max-aspect-ratio: 13/9){
+    .summary{
+        grid-template-columns: 1fr;
+    }
+}
+@media only screen and (min-aspect-ratio: 13/9){
+    .summary{
+        grid-template-columns: 2fr 3fr 1fr;
+    }
+}
+
 .summary:hover{
     cursor: pointer;
 }
@@ -34,22 +45,37 @@
 .title{
     position:relative;
     width: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .tagline{
     position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .price{
     position:relative;
     width: 100%;
-    display: flex;
-    align-items: center;
+}
+
+@media only screen and (max-aspect-ratio: 13/9){
+    .title, .tagline, .price{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .desktop{
+        display: none;
+    }
+}
+@media only screen and (min-aspect-ratio: 13/9){
+    .title, .tagline, .price{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .mobile{
+        display: none;
+    }
 }
 
 .description{
