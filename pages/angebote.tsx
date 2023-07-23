@@ -38,11 +38,10 @@ interface tagline{
 
 interface OfferProps{
   offers: Offer_item[];
-  isMobile: boolean;
   taglines: tagline[]
 }
 
-export default function Angebote({offers, isMobile, taglines}:OfferProps) {
+export default function Angebote({offers, taglines}:OfferProps) {
   const router: NextRouter = useRouter()
   const path:string = `https://www.mrweber.ch${router.pathname}`
   const page: string = router.pathname.replace("/", "").toUpperCase() === "" ? "HOME" : router.pathname.replace("/", "").toUpperCase()
@@ -62,7 +61,7 @@ export default function Angebote({offers, isMobile, taglines}:OfferProps) {
       <section className="section">
       <h1 className="title">Angebote</h1>
       {offers.map(offer=>{
-        return <Offer offer={offer} key={offer._id} isMobile={isMobile}/>
+        return <Offer offer={offer} key={offer._id} />
       })}
       </section>
     </main>

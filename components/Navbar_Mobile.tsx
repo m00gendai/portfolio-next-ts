@@ -18,16 +18,19 @@ export default function Navbar_Mobile(){
 
     return (
         <nav className={s.nav}>
-            {open ? <GiKnifeFork
-                style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "cyan"}}
-                onClick={()=>handleClick()}
-                className={s.icon}/>
-            :
-            <GiHamburger 
-                style={{margin: "0 1rem 0 0", fontSize: "2rem", color: "magenta"}}
-                onClick={()=>handleClick()}
-                className={s.icon}/>
-            }
+            <span className={s.tagline}>mrweber Webdesign</span>
+            <div className={s.togglor}>
+                {open ? <GiKnifeFork
+                    style={{fontSize: "2rem", color: "cyan"}}
+                    onClick={()=>handleClick()}
+                    className={s.icon}/>
+                :
+                <GiHamburger 
+                    style={{fontSize: "2rem", color: "magenta"}}
+                    onClick={()=>handleClick()}
+                    className={s.icon}/>
+                }
+            </div>
             {open ? <div className={s.inner}>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/">Home</Link>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/portfolio">Portfolio</Link>
