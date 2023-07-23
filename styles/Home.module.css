@@ -71,8 +71,27 @@
     animation-direction: alternate;
 }
 
+.whackyWavingInflatableArmsFlailingTubeMan{
+    position: relative;
+    width: 90%;
+    color: cyan;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 3rem 0 2rem 0;
+}
 
+.whackyWavingInflatableArmsFlailingTubeMan p{
+    width: 100%;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
 
+.whackyWavingInflatableArmsFlailingTubeMan a{
+    color: magenta;
+    text-decoration: none;
+}
 
 @keyframes onoff {
     0% {
