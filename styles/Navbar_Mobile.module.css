@@ -1,12 +1,12 @@
 .nav{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 3rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     background: black;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 @media only screen and (min-aspect-ratio: 13/9){
@@ -21,10 +21,27 @@
     bottom: 0;
     transform: translateY(50%);
     height: 0.25rem;
-    width: 100%;
+    width: 110%;
     background: var(--linear-090-mainRed-mainBlue);
     content: "";
     z-index: 200;
+}
+
+.tagline{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: cyan;
+}
+
+.togglor{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .inner{
@@ -45,7 +62,7 @@
     width: 100%;
     text-align: right;
     text-decoration: none;
-    margin: 1rem;
+    margin: 1rem 0;
     font-size: 2rem;
     font-weight:bold;
     color: var(--mainBlue);
