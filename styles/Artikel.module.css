@@ -1,0 +1,36 @@
+.container{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.inner{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: cyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.25rem;
+}
+
+.blog{
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.title{
+    color: black;
+    position: relative;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.excerpt{
+    color: black;
+    position: relative;
+    width: 100%;
+}
