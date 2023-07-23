@@ -68,7 +68,7 @@ export default function Home({taglines}:IndexProps) {
     return tagline.page.toUpperCase() === page
   })
 
-  const ctaText: string = `Überzeugen Sie sich von meinem <a href="/portfolio">Portfolio</a> und <a href="/kontakt">kontaktieren</a> Sie mich!`
+  const ctaText: string = `Überzeugen Sie sich von meinem <a href="/portfolio" title="zum Portfolio">Portfolio</a> und <a href="/kontakt" title="zum Kontaktformular">kontaktieren</a> Sie mich!`
 
   return (
     <>

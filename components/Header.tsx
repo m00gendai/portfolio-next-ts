@@ -22,6 +22,7 @@ export default function Header({title, content, url, image}:HeaderProps){
             <meta property="og:url" content={url} />
             <meta property="og:image" content="/sd_mrweber3.png" />
             <link rel="icon" href="/sd_mrweber3.png" />
+            <link rel="apple-touch-icon" href="/sd_mrweber3.png" />
         </Head>
     )
 }
