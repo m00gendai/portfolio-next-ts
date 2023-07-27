@@ -76,6 +76,7 @@ export interface Blog {
         <h1 className="title">Artikel</h1>
         <div className={s.container}>
         {blogs.map(blog =>{
+          const date = new Date(blog._created*1000).toLocaleDateString()
             return(
                 <div className={s.inner}>
                     <Link className={s.blog} href={`/artikel/${blog.title.toLowerCase()}`}>
@@ -83,7 +84,7 @@ export interface Blog {
                             <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${blog.hero.path}`} speed={-20} />
                         </ParallaxBanner>
                         <h2 className={s.title}>{blog.title}</h2>
-                        <p className={s.excerpt} dangerouslySetInnerHTML={{__html:blog.intro}}></p>
+                        <p className={s.date}>{date}</p>
                     </Link>
                 </div>
             ) 
