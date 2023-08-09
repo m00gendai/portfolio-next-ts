@@ -9,6 +9,7 @@ export interface Blog {
     intro: string
     hero: Hero
     content: Content[]
+    tag: Tag[]
     _modified: number
     _mby: string
     _created: number
@@ -62,6 +63,17 @@ export interface Blog {
     _mby: string
   }
 
+  interface Tag{
+    tag: string;
+    color?: string;
+    _state: number;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _cby: string;
+    _id: string;
+  }
+
   interface blogProps{
     blogs:Blog[];
   }
@@ -78,17 +90,19 @@ export interface Blog {
         {blogs.map(blog =>{
           const date = new Date(blog._created*1000).toLocaleDateString()
             return(
-                <div className={s.inner}>
+                <div className={s.inner} key={blog._id}>
                     <Link className={s.blog} href={{
                         pathname: `/artikel/[slug]`,
                         query: {slug: encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))},
                     }}
                     as={`/artikel/${encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))}`}
+                    
                         >
-                        <ParallaxBanner className="parallax">
-                            <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${blog.hero.path}`} speed={-20} />
-                        </ParallaxBanner>
+                        <div className={s.thumb} style={{backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${blog.hero.path}")`}}></div>
+                            
+
                         <h2 className={s.title}>{blog.title}</h2>
+                        
                         <p className={s.date}>{date}</p>
                     </Link>
                 </div>
