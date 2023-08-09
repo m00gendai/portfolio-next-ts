@@ -145,7 +145,7 @@ const blogs:Blog[] = await getBlogs.json()
 const pathsWithParams = blogs.map((blog) => ({ params: { slug: blog.title.toLocaleLowerCase().replaceAll(" ", "_") } }));
     return {
         paths: pathsWithParams,
-        fallback: true, // false or "blocking"
+        fallback: false, // false or "blocking"
       }
 }
 
