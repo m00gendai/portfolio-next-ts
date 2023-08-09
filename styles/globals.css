@@ -208,6 +208,10 @@ ul > li::before{
   height: 25vh;
 }
 
+.large{
+  height: 50vh;
+}
+
 .articleImageGrid{
   position: relative;
   width: 100%;
@@ -228,6 +232,9 @@ ul > li::before{
 @media only screen and (max-aspect-ratio: 13/9){
   .parallax{
     height: 25vw;
+  }
+  .large{
+    height: 50vw;
   }
 }
 

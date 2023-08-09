@@ -78,7 +78,7 @@ export default function Page({blog}:blogProps) {
         title={`${blog[0].title}`}
         content={`${blog[0].intro}`}
         url={path}
-        image={""}
+        image={blog[0].hero.path}
         />
 
         <main className="main">
@@ -87,7 +87,7 @@ export default function Page({blog}:blogProps) {
             <div style={{width: "100%"}} dangerouslySetInnerHTML={{__html: blog[0].intro}}></div>
             <figure key={`image_${blog[0].hero._id}`}>
                 <ParallaxBanner className="parallax large">
-                <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${blog[0].hero.path}`} speed={-20} translateY={[0, 100]}/>
+                <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${blog[0].hero.path}`} speed={-20}/>
                 </ParallaxBanner>
                 <figcaption></figcaption>
             </figure> 
@@ -101,7 +101,8 @@ export default function Page({blog}:blogProps) {
                             <div className="articleImageGrid">
                               {content.image.map(img =>{
                                return (
-                              <div style={{position: "relative", width: "100%", display: "flex", flexWrap: "wrap", alignContent: "flex-start", alignItems: "flex-start", justifyContent: "center", aspectRatio: "16/9"}}>
+                              <div key={img._id}
+                              style={{position: "relative", width: "100%", display: "flex", flexWrap: "wrap", alignContent: "flex-start", alignItems: "flex-start", justifyContent: "center", aspectRatio: "16/9"}}>
                                 <figure style={{width: "100%", overflow: "hidden", position: "relative", display: "flex", background: "red", margin: " 0 0 0.25rem 0"}}>
                                   <Image
                                     src={`https://cms.mrweber.ch/storage/uploads/${img.path}`}
