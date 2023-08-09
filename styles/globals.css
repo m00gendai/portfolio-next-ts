@@ -208,6 +208,18 @@ ul > li::before{
   height: 25vh;
 }
 
+.large{
+  height: 50vh;
+}
+
+.articleImageGrid{
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
 .imageSpan{
   position: relative;
   width: 100%;
@@ -220,6 +232,9 @@ ul > li::before{
 @media only screen and (max-aspect-ratio: 13/9){
   .parallax{
     height: 25vw;
+  }
+  .large{
+    height: 50vw;
   }
 }
 
