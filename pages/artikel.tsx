@@ -79,7 +79,12 @@ export interface Blog {
           const date = new Date(blog._created*1000).toLocaleDateString()
             return(
                 <div className={s.inner}>
-                    <Link className={s.blog} href={`/artikel/${blog.title.toLowerCase()}`}>
+                    <Link className={s.blog} href={{
+                        pathname: `/artikel/[slug]`,
+                        query: {slug: encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))},
+                    }}
+                    as={`/artikel/${encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))}`}
+                        >
                         <ParallaxBanner className="parallax">
                             <ParallaxBannerLayer image={`https://cms.mrweber.ch/storage/uploads/${blog.hero.path}`} speed={-20} />
                         </ParallaxBanner>
