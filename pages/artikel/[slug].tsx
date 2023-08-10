@@ -111,7 +111,7 @@ export default function Page({blog}:blogProps) {
                                     style={{objectFit: "cover"}}
                                   />
                                 </figure>
-                                <figcaption style={{width: "95%", display: "flex"}} dangerouslySetInnerHTML={{__html: img.description}}></figcaption>
+                                <figcaption style={{width: "95%", display: "inline"}} dangerouslySetInnerHTML={{__html: img.description}}></figcaption>
                               </div>
                               )})}
                 
