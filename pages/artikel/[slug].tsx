@@ -76,7 +76,7 @@ export default function Page({blog}:blogProps) {
     <>
         <Header
         title={`${blog[0].title}`}
-        content={`${blog[0].intro}`}
+        content={`${blog[0].intro.replace(/<\/?[^>]+(>|$)/g, '')}`}
         url={path}
         image={blog[0].hero.path}
         />
