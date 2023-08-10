@@ -2,7 +2,7 @@ import React from "react";
 import Header from "@/components/Header"
 import Link from "next/link";
 import s from "@/styles/Artikel.module.css"
-import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
+import { NextRouter, useRouter } from "next/router";
 
 export interface Blog {
     title: string
@@ -74,15 +74,41 @@ export interface Blog {
     _id: string;
   }
 
-  interface blogProps{
-    blogs:Blog[];
+  interface tagline{
+    page: string;
+    title: string;
+    description: string;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _state: number;
+    _cby: string;
+    _id: string;
   }
 
- export default function Page({blogs}:blogProps){
+  interface blogProps{
+    blogs:Blog[];
+    taglines: tagline[]
+  }
+
+ export default function Page({blogs, taglines}:blogProps){
+
+  const router: NextRouter = useRouter()
+  const path:string = `https://www.mrweber.ch${router.pathname}`
+  const page: string = router.pathname.replace("/", "").toUpperCase() === "" ? "HOME" : router.pathname.replace("/", "").toUpperCase()
+
+  const tag = taglines.filter(tagline=>{
+    return tagline.page.toUpperCase() === page
+  })
  
  return (
     <>
-    
+    <Header
+      title={`${tag[0].title}`}
+      content={tag[0].description}
+      url={path}
+      image={""}
+    />
     <main className="main">
       <section className="section">
         <h1 className="title">Artikel</h1>
@@ -128,9 +154,20 @@ export async function getStaticProps(){
   
     const blogs:Blog[] = await getBlogs.json()
 
+    const getTaglines: Response = await fetch(
+      'https://cms.mrweber.ch/api/content/items/taglines',
+      {
+        headers: {
+          'api-key': `${process.env.COCKPIT}`,
+        },
+      }
+    )
+  
+    const taglines:tagline[] = await getTaglines.json()
+
     return{
         props:{
-            blogs
+            blogs, taglines
         }, revalidate: 10
     }
 }
