@@ -141,10 +141,10 @@ export interface Blog {
  )
   }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
 
     const getBlogs: Response = await fetch(
-        'https://cms.mrweber.ch/api/content/items/blog?populate=100',
+        'https://cms.mrweber.ch/api/content/items/blog?populate=100&sort=%7B_created%3A-1%7D',
         {
         headers: {
             'api-key': `${process.env.COCKPIT}`,
@@ -167,7 +167,7 @@ export async function getStaticProps(){
 
     return{
         props:{
-            blogs, taglines
-        }, revalidate: 10
+            blogs
+        }
     }
 }

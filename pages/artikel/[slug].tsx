@@ -129,27 +129,7 @@ export default function Page({blog}:blogProps) {
   )
 }
 
-export async function getStaticPaths(){
-    
-    const getBlogs: Response = await fetch(
-    'https://cms.mrweber.ch/api/content/items/blog?populate=100',
-    {
-    headers: {
-        'api-key': `${process.env.COCKPIT}`,
-    },
-    }
-)
-
-const blogs:Blog[] = await getBlogs.json()
-
-const pathsWithParams = blogs.map((blog) => ({ params: { slug: blog.title.toLocaleLowerCase().replaceAll(" ", "_") } }));
-    return {
-        paths: pathsWithParams,
-        fallback: false, // false or "blocking"
-      }
-}
-
-export async function getStaticProps(context:any){
+export async function getServerSideProps(context:any){
     const getBlogs: Response = await fetch(
         `https://cms.mrweber.ch/api/content/items/blog?populate=100`,
         {
@@ -158,7 +138,7 @@ export async function getStaticProps(context:any){
         },
         }
     )
-console.log(context.params.slug)
+
     const blogs:Blog[] = await getBlogs.json()
     const blog = blogs.filter(blog=>{
       return blog.title.toLocaleLowerCase().replaceAll(" ", "_") === decodeURIComponent(context.params.slug)
@@ -168,6 +148,6 @@ console.log(context.params.slug)
     return{
         props:{
             blog
-        }, revalidate: 10
+        }
     }
 }
