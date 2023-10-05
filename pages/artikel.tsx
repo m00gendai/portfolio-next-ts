@@ -118,7 +118,7 @@ export interface Blog {
 export async function getStaticProps(){
 
     const getBlogs: Response = await fetch(
-        'https://cms.mrweber.ch/api/content/items/blog?populate=100',
+        'https://cms.mrweber.ch/api/content/items/blog?populate=100&sort=%7B_created%3A-1%7D',
         {
         headers: {
             'api-key': `${process.env.COCKPIT}`,
