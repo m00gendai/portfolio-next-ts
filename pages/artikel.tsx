@@ -167,7 +167,7 @@ export async function getServerSideProps(){
 
     return{
         props:{
-            blogs
+            blogs, taglines
         }
     }
 }
