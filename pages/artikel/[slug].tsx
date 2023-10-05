@@ -76,7 +76,7 @@ export default function Page({blog}:blogProps) {
     <>
         <Header
         title={`${blog[0].title}`}
-        content={`${blog[0].intro}`}
+        content={`${blog[0].intro.replace(/<\/?[^>]+(>|$)/g, '')}`}
         url={path}
         image={blog[0].hero.path}
         />
@@ -111,7 +111,7 @@ export default function Page({blog}:blogProps) {
                                     style={{objectFit: "cover"}}
                                   />
                                 </figure>
-                                <figcaption style={{width: "95%", display: "flex"}} dangerouslySetInnerHTML={{__html: img.description}}></figcaption>
+                                <figcaption style={{width: "95%", display: "inline"}} dangerouslySetInnerHTML={{__html: img.description}}></figcaption>
                               </div>
                               )})}
                 
