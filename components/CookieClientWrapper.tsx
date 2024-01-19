@@ -1,5 +1,12 @@
 "use client"
 
+import { CookieConsent, getCookieConsentValue } from "react-cookie-consent";
+import { useEffect } from "react"
+import ReactGA from "react-ga4";
+import Link from "next/link"
+import s from "@/styles/footer.module.css"
+import c from "@/styles/Cookie.module.css"
+
 export default function CookieClientWrapper(){
     useEffect(() => {
         const isConsent = getCookieConsentValue("mrwebersYummyCookie");
@@ -10,10 +17,7 @@ export default function CookieClientWrapper(){
     
       const initGA = (id: string) => {
           ReactGA.initialize(id);
-      };
-    
-      const date: Date = new Date()
-      const currentYear:number = date.getFullYear()
+      }
     
       const handleAcceptCookie = () => {
           initGA(`${process.env.NEXT_PUBLIC_GA}`)
