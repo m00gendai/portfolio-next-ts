@@ -60,3 +60,50 @@ export interface Blog {
     _cby: string;
     _id: string;
   }
+
+  export interface Project {
+    name: string;
+    url: string;
+    description: string;
+    details: string;
+    image: Medium;
+    tech: Stack[];
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _state: number;
+    _cby: string;
+    _id: string;
+  }
+
+  export interface Stack {
+    stack: Stack_entry;
+  }
+
+  export interface Stack_entry {
+    brand: string;
+    url: string;
+    excerpt: string;
+    image: Medium;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _state: number;
+    _cby: string;
+    _id: string;
+    Bildquelle: string;
+    _model: string;
+  }
+
+  export interface Info{
+    intro: string;
+    projects: string;
+    apps: string;
+    demos: string;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _state: number;
+    _cby: string;
+    _id: string;
+  }
