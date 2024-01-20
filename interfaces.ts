@@ -29,3 +29,34 @@ export interface Metadata{
     folder: string;
     _id: string;
   }
+
+
+export interface Blog {
+    title: string
+    intro: string
+    hero: Medium
+    content: Content[]
+    tag: Tag[]
+    _modified: number
+    _mby: string
+    _created: number
+    _state: number
+    _cby: string
+    _id: string
+  }
+  
+  export interface Content {
+    text: string[]
+    image?: Medium[]
+  }
+  
+  export interface Tag{
+    tag: string;
+    color?: string;
+    _state: number;
+    _modified: number;
+    _mby: string;
+    _created: number;
+    _cby: string;
+    _id: string;
+  }
