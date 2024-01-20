@@ -1,24 +1,7 @@
-import s from "@/styles/Kontakt.module.css"
+import { isFocus, isFormValid, isFormValue } from "@/interfaces";
+import s from "@/styles/contactForm.module.css"
 import { SetStateAction } from "react";
 
-interface isFormValue {
-    name: string;
-    mail: string;
-    subject: string;
-    message: string;
-  }
-  interface isFocus {
-    name: boolean;
-    mail: boolean;
-    subject: boolean;
-    message: boolean;
-  }
-  interface isFormValid {
-    name: boolean;
-    mail: boolean;
-    subject: boolean;
-    message: boolean;
-  }
 interface inputProps {
   tag: string;
   type: string;
@@ -46,12 +29,7 @@ export default function Input({
 }: inputProps) {
   return (
     <div className={s.containerInput}>
-      <label
-        className={
-           s.labelActive
-        }
-        htmlFor={`${tag}`}
-      >
+      <label className={s.labelActive} htmlFor={`${tag}`}>
         {content}
       </label>
       <input
@@ -66,17 +44,11 @@ export default function Input({
             ...formValid,
             [event.currentTarget.name]: event.currentTarget.checkValidity(),
           });
-
         }}
         onChange={(event) =>
           setFormValue({ ...formValue, [tag]: event.currentTarget.value })
         }
-        className={
-          
-            s.inputActive
-            
-        }
-      />
+        className={s.inputActive}/>
     </div>
   );
 }
