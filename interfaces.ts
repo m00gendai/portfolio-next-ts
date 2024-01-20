@@ -180,3 +180,27 @@ export interface isFeedback {
   color: string;
   content: string;
 }
+
+export interface Imprint_tile{
+  title: string;
+  address: string;
+  url: string;
+  _model: string;
+  _id: string;
+}
+
+export interface Imprint_field{
+  title: string;
+  content: string;
+}
+
+export interface Imprint{
+  tiles: Imprint_tile[];
+  field: Imprint_field[];
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
