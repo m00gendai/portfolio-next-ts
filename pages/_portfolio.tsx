@@ -38,6 +38,7 @@ interface Stack_entry {
 interface Stack {
   stack: Stack_entry;
 }
+
 interface Project_image{
     path: string;
     title: string;
