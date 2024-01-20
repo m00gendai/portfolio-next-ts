@@ -4,6 +4,7 @@ import { Metadata, Blog } from "../../interfaces";
 import Link from "next/link"
 import Image from "next/image"
 import { ResolvingMetadata } from "next";
+import { urlReplacer } from "@/utils";
   
 interface Props{
     params:{
@@ -64,12 +65,7 @@ export default async function Artikel(){
                         const date = new Date(blog._created*1000).toLocaleDateString()
                         return(
                             <div className={s.inner} key={blog._id}>
-                                <Link className={s.blog} href={{
-                                    pathname: `/artikel/[slug]`,
-                                    query: {slug: encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))},
-                                    }}
-                                    as={`/artikel/${encodeURIComponent(blog.title.toLocaleLowerCase().replaceAll(" ", "_"))}`}
-                                >
+                                <Link className={s.blog} href={`/artikel/${urlReplacer(encodeURIComponent(blog.title))}`}>
                                     <div className={s.thumb}>
                                         <Image
                                             src={`https://cms.mrweber.ch/storage/uploads/${blog.hero.path}`}
