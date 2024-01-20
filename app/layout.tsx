@@ -6,6 +6,7 @@ import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "rea
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { Providers } from './providers'
+import CookieClientWrapper from '@/components/CookieClientWrapper'
 
 
 export default function RootLayout({children}:{children: React.ReactNode}){
@@ -29,7 +30,7 @@ export default function RootLayout({children}:{children: React.ReactNode}){
   <Navbar_Mobile /> 
   <Navbar />
   <Providers>{children}</Providers>
-  
+  <CookieClientWrapper />
   <footer className={s.footer}>
     <div className={s.inner}>
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
