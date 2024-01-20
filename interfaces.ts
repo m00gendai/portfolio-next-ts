@@ -48,6 +48,7 @@ export interface Blog {
   export interface Content {
     text: string[]
     image?: Medium[]
+    asset?: Medium[]
   }
   
   export interface Tag{
@@ -126,4 +127,30 @@ export interface Offer_part{
   title: string;
   description: string;
   content: string;
+}
+
+export interface Information{
+  title: string;
+  text: string;
+  content: Content[];
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
+export interface Stack{
+  brand: string;
+  url: string;
+  excerpt: string;
+  image: Medium;
+  Bildquelle: string;
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
 }
