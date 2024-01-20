@@ -5,6 +5,7 @@ import Link from "next/link"
 import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "react-icons/si"
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
+import { Providers } from './providers'
 
 
 export default function RootLayout({children}:{children: React.ReactNode}){
@@ -27,7 +28,8 @@ export default function RootLayout({children}:{children: React.ReactNode}){
   
   <Navbar_Mobile /> 
   <Navbar />
-  {children}
+  <Providers>{children}</Providers>
+  
   <footer className={s.footer}>
     <div className={s.inner}>
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
