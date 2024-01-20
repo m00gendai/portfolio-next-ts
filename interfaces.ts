@@ -107,3 +107,23 @@ export interface Blog {
     _cby: string;
     _id: string;
   }
+
+export interface Offer_item{
+  title: string;
+  tagline: string;
+  price: string;
+  intro: string;
+  parts: Offer_part[];
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
+
+export interface Offer_part{
+  title: string;
+  description: string;
+  content: string;
+}
