@@ -204,3 +204,20 @@ export interface Imprint{
   _cby: string;
   _id: string;
 }
+
+export interface Dsgvo_chapter{
+  title: string;
+  content: string;
+}
+
+export interface Dsgvo{
+  imprint: string;
+  chapter: Dsgvo_chapter[];
+  source: string;
+  modified: number;
+  _mby: string
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
+}
