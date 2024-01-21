@@ -1,3 +1,5 @@
+import { Metadata } from "./interfaces"
+
 export function urlReplacer(string:string){
     return string
         .toLowerCase()
@@ -36,4 +38,41 @@ export function stringReplacer(string:string){
         .replaceAll("&nbsp;", " ")
         .replaceAll(removeLinks, "")
         .replaceAll(removeEmphasis, "")
+}
+
+export async function pageMetadata(pageName:string){
+    const getMetadata: Response = await fetch(
+        `https://cms.mrweber.ch/api/content/item/taglines?filter=%7Bpage%3A%22${pageName}%22%7D&populate=1`,
+        {
+            headers: {
+                'api-key': `${process.env.COCKPIT}`,
+            },
+        }
+    )
+    const metadata:Metadata = await getMetadata.json()
+
+    return {
+        title: metadata.title,
+        description: metadata.description,
+        openGraph: {
+            title: metadata.title,
+            description: metadata.description,
+            images: [
+                {
+                    url: metadata.image ? `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}` : "",
+                }
+            ],
+            locale: 'de_CH',
+            type: 'website',
+        },
+        icons: {
+            icon: '/sd_mrweber3.png',
+            shortcut: '/sd_mrweber3.png',
+            apple: '/sd_mrweber3.png',
+            other: {
+                rel: 'apple-touch-icon-precomposed',
+                url: '/sd_mrweber3.png',
+            },
+        },
+    }
 }
