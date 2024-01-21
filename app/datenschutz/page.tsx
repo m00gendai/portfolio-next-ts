@@ -1,37 +1,9 @@
-import { Dsgvo, Imprint, Metadata } from "../../interfaces";
+import { pageMetadata } from "@/utils";
+import { Dsgvo } from "../../interfaces";
 import s from "@/styles/Dsgvo.module.css"
 
-interface Props{
-    params:{
-        slug: string
-    }
-}
-
-export async function generateMetadata({params}:Props){
-    const pageName:string = params.slug
-    const getMetadata: Response = await fetch(
-        `https://cms.mrweber.ch/api/content/item/taglines?filter=%7Bpage%3A%22${"Datenschutz"}%22%7D&populate=1`,
-        {
-            headers: {
-                'api-key': `${process.env.COCKPIT}`,
-            },
-        }
-    )
-    const metadata:Metadata = await getMetadata.json()
-
-    return {
-        title: metadata.title,
-        description: metadata.description,
-        openGraph: {
-            title: metadata.title,
-            description: metadata.description,
-            images: [
-                {
-                    url: metadata.image ? `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}` : "",
-                }
-            ]
-        }
-    }
+export async function generateMetadata(){
+    return pageMetadata("Datenschutz")
 }
 
 async function getDsgvo(){

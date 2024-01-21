@@ -1,39 +1,12 @@
-import { Imprint, Metadata } from "../../interfaces";
+import { Imprint } from "../../interfaces";
 import s from "@/styles/Impressum.module.css"
+import { pageMetadata } from "@/utils";
 import Link from "next/link"
 
-interface Props{
-    params:{
-        slug: string
-    }
+export async function generateMetadata(){
+    return pageMetadata("Impressum")
 }
 
-export async function generateMetadata({params}:Props){
-    const pageName:string = params.slug
-    const getMetadata: Response = await fetch(
-        `https://cms.mrweber.ch/api/content/item/taglines?filter=%7Bpage%3A%22${"Impressum"}%22%7D&populate=1`,
-        {
-            headers: {
-                'api-key': `${process.env.COCKPIT}`,
-            },
-        }
-    )
-    const metadata:Metadata = await getMetadata.json()
-
-    return {
-        title: metadata.title,
-        description: metadata.description,
-        openGraph: {
-            title: metadata.title,
-            description: metadata.description,
-            images: [
-                {
-                    url: metadata.image ? `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}` : "",
-                }
-            ]
-        }
-    }
-}
 
 async function getImprintTiles(){
     const getImprintTiles: Response = await fetch(

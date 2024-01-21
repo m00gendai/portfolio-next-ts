@@ -1,39 +1,10 @@
 
 import SplashText from "@/components/SplashText";
 import s from "../styles/Home.module.css"
-import { Metadata } from "@/interfaces";
+import { pageMetadata } from "@/utils";
   
-interface Props{
-    params:{
-        slug: string
-    }
-}
-
-export async function generateMetadata({params}:Props){
-    const pageName:string = params.slug
-    const getMetadata: Response = await fetch(
-        `https://cms.mrweber.ch/api/content/item/taglines?filter=%7Bpage%3A%22${pageName === undefined ? "Home" : pageName}%22%7D&populate=1`,
-        {
-            headers: {
-                'api-key': `${process.env.COCKPIT}`,
-            },
-        }
-    )
-    const metadata:Metadata = await getMetadata.json()
-
-    return {
-        title: metadata.title,
-        description: metadata.description,
-        openGraph: {
-            title: metadata.title,
-            description: metadata.description,
-            images: [
-                {
-                    url: `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}`,
-                }
-            ]
-        }
-    }
+export async function generateMetadata(){
+    return pageMetadata("Home")
 }
 
 export default async function Home(){

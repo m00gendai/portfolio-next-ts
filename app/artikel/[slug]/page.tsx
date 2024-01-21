@@ -12,9 +12,7 @@ interface Props{
 }
 
 export async function generateMetadata({params}:Props){
-    
     const data:Blog = await getBlog(params.slug)
-    const decodedSlug:string = decodeURIComponent(urlReplacer(params.slug))
 
     if(urlReplacer(decodeURIComponent(data.title)) !== urlReplacer(decodeURIComponent(params.slug))){
         return{
@@ -32,8 +30,19 @@ export async function generateMetadata({params}:Props){
                 {
                     url: data.hero ? `https://cms.mrweber.ch/storage/uploads/${data.hero.path}` : "",
                 }
-            ]
-        }
+            ],
+            locale: 'de_CH',
+            type: 'website',
+        },
+        icons: {
+            icon: '/sd_mrweber3.png',
+            shortcut: '/sd_mrweber3.png',
+            apple: '/sd_mrweber3.png',
+            other: {
+                rel: 'apple-touch-icon-precomposed',
+                url: '/sd_mrweber3.png',
+            },
+        },
     }
 }
 
