@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import s from "@/styles/Navbar_Mobile.module.css"
 import {GiHamburger, GiKnifeFork} from "react-icons/gi"

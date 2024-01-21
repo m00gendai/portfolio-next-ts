@@ -1,87 +1,17 @@
-import * as React from 'react';
+"use client"
+
 import { useState, useRef, useEffect } from 'react';
 import s from '../styles/Reel_portrait.module.css';
 import ReelDetail from './ReelDetail';
 import Image from "next/image"
-
-interface Stack_entry {
-  brand: string;
-  url: string;
-  excerpt: string;
-  image: Stack_image;
-  _modified: number;
-  _mby: string;
-  _created: number;
-  _state: number;
-  _cby: string;
-  _id: string;
-  Bildquelle: string;
-  _model: string;
-}
-
-interface Stack {
-  stack: Stack_entry;
-}
-
-interface Stack_image {
-  path: string;
-  title: string;
-  mime: string;
-  type: string;
-  description: string;
-  tags: string[];
-  size: number;
-  colors: string[];
-  width: number;
-  height: number;
-  _hash: string;
-  _created: number;
-  _modified: number;
-  _cby: string;
-  folder: string;
-  _id: string;
-}
-
-interface Project_image{
-    path: string;
-    title: string;
-    mime: string;
-    type: string;
-    description: string;
-    tags: string[];
-    size: number;
-    colors: string[];
-    width: number;
-    height: number;
-    _hash: string;
-    _created: number;
-    _modified: number;
-    _cby: string;
-    folder: string;
-    _id: string;
-}
-
-interface Project {
-  name: string;
-  url: string;
-  description: string;
-  details: string;
-  image: Project_image;
-  tech: Stack[];
-  _modified: number;
-  _mby: string;
-  _created: number;
-  _state: number;
-  _cby: string;
-  _id: string;
-}
+import { Project } from '@/interfaces';
 
 interface props {
   projects: Project[];
   id: string;
 }
 
-export default function Reel({ projects, id }: props) {
+export default function ReelPortrait({ projects, id }: props) {
   /*
     This ref references the grid container
   */
@@ -183,8 +113,9 @@ export default function Reel({ projects, id }: props) {
                 width={project.image.width}
                 height={project.image.height}
                 style={imageStyle}
+                title={project.name}
               >
-        </Image>
+              </Image>
               <div className={s.fallback}>{project.name}</div>
             </div>
           </div>
