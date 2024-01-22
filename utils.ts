@@ -5,6 +5,9 @@ export function urlReplacer(string:string){
         .toLocaleLowerCase()
         .replaceAll(" ", "_")
         .replaceAll("?", "")
+        .replaceAll("ü", "u")
+        .replaceAll("ö", "o")
+        .replaceAll("ä", "a")
 }
 
 export function stringReplacer(string:string){
