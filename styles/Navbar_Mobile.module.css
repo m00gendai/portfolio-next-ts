@@ -21,7 +21,7 @@
     bottom: 0;
     transform: translateY(50%);
     height: 0.25rem;
-    width: 110%;
+    width: 100%;
     background: var(--linear-090-mainRed-mainBlue);
     content: "";
     z-index: 200;
