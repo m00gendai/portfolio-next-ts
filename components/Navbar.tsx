@@ -1,3 +1,4 @@
+"use client"
 import s from "../styles/Navbar.module.css"
 import Link from "next/link"
 

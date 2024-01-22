@@ -21,11 +21,9 @@
 }
 
 .inner{
+    position: relative;
     width: 80%;
     aspect-ratio: 1/1;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .card:nth-child(even) {

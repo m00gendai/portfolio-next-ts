@@ -1,56 +1,13 @@
+"use client"
+
 import Input from "@/components/Input";
 import Text from "@/components/Textarea"
+import { isFeedback, isFocus, isFormValid, isFormValue } from "@/interfaces";
 import { FormEvent, useState } from "react";
-import s from "@/styles/Kontakt.module.css"
-import { NextRouter, useRouter } from "next/router";
-import Header from "@/components/Header";
+import s from "@/styles/contactForm.module.css"
 
-interface isFocus {
-  name: boolean;
-  mail: boolean;
-  subject: boolean;
-  message: boolean;
-}
+export default function ContactForm(){
 
-interface isFormValue {
-  name: string;
-  mail: string;
-  subject: string;
-  message: string;
-}
-
-interface isFormValid {
-  name: boolean;
-  mail: boolean;
-  subject: boolean
-  message: boolean;
-}
-
-interface isFeedback {
-  color: string;
-  content: string;
-}
-
-interface tagline{
-  page: string;
-  title: string;
-  description: string;
-  _modified: number;
-  _mby: string;
-  _created: number;
-  _state: number;
-  _cby: string;
-  _id: string;
-}
-
-interface KontaktProps{
-  taglines: tagline[];
-}
-
-
-export default function Kontakt({taglines}:KontaktProps){
-    
-    
     const [focus, setFocus] = useState<isFocus>({
         name: false,
         mail: false,
@@ -116,7 +73,7 @@ export default function Kontakt({taglines}:KontaktProps){
           } else {
               const errmsg = await res.json()
               setFeedback({color: "magenta", content: `
-                Es ist etwas schiefgegangen. Bitte überprüfen Sie insbesondere Ihre angegebene E-Mail-Adresse. Ansonsten wenden SIe sich an die im Impressum angegebene Kontaktmöglichkeit.
+                Es ist etwas schiefgegangen. Bitte überprüfen Sie insbesondere Ihre angegebene E-Mail-Adresse. Ansonsten wenden Sie sich an die im Impressum angegebene Kontaktmöglichkeit.
                 Fehler: ${res.status} 
                 Meldung ${errmsg.err}
               `})
@@ -124,29 +81,8 @@ export default function Kontakt({taglines}:KontaktProps){
         })
     }}
 
-    const router: NextRouter = useRouter()
-    const path:string = `https://www.mrweber.ch${router.pathname}`
-    const page: string = router.pathname.replace("/", "").toUpperCase() === "" ? "HOME" : router.pathname.replace("/", "").toUpperCase()
-    const tag = taglines.filter(tagline=>{
-      return tagline.page.toUpperCase() === page
-    })
-  
-    return (
-      <>
-      <Header
-        title={`${tag[0].title}`}
-        content={tag[0].description}
-        url={path}
-        image={""}
-      />
-        <main className="main">
-            <section className="section">
-                <h1 className="title">Kontakt</h1>
-                <p style={{width: "100%"}}>
-                    {`Um mit mir in Kontakt zu treten, einfach unten stehendes Formular ausfüllen mit ein zwei Zeilen, um was es geht
-                    (z.B. "Ich interessiere mich für eine WordPress-Webseite für eine Schreinerei in Schaffhausen, bitte kontaktieren Sie mich").`}
-                </p>
-    <form className={s.form} onSubmit={(event) => handleSubmit(event)}>
+    return(
+        <form className={s.form} onSubmit={(event) => handleSubmit(event)}>
       <Input
         tag="name"
         type="text"
@@ -200,29 +136,5 @@ export default function Kontakt({taglines}:KontaktProps){
         <p style={{ color: feedback.color, width: "100%", textAlign: "center"}}>{feedback.content}</p>
       ) : null}
     </form>
-
-
-            </section>
-        </main>
-        </>
     )
 }
-
-export async function getStaticProps(){
-  const getTaglines: Response = await fetch(
-    'https://cms.mrweber.ch/api/content/items/taglines',
-    {
-      headers: {
-        'api-key': `${process.env.COCKPIT}`,
-      },
-    }
-  )
-  
-  const taglines:tagline[] = await getTaglines.json()
-  
-  return{
-    props:{
-        taglines
-    }, revalidate: 10
-  }
-  }

@@ -1,79 +1,10 @@
-import * as React from 'react';
+"use client"
+
 import s from '../styles/Reel.module.css';
 import { BiLinkExternal } from "react-icons/bi";
 import Link from 'next/link';
-
-interface Stack_entry {
-  brand: string;
-  url: string;
-  excerpt: string;
-  image: Stack_image;
-  _modified: number;
-  _mby: string;
-  _created: number;
-  _state: number;
-  _cby: string;
-  _id: string;
-  Bildquelle: string;
-  _model: string;
-}
-
-interface Stack {
-  stack: Stack_entry;
-}
-
-interface Stack_image {
-  path: string;
-  title: string;
-  mime: string;
-  type: string;
-  description: string;
-  tags: string[];
-  size: number;
-  colors: string[];
-  width: number;
-  height: number;
-  _hash: string;
-  _created: number;
-  _modified: number;
-  _cby: string;
-  folder: string;
-  _id: string;
-}
-
-interface Project_image{
-    path: string;
-    title: string;
-    mime: string;
-    type: string;
-    description: string;
-    tags: string[];
-    size: number;
-    colors: string[];
-    width: number;
-    height: number;
-    _hash: string;
-    _created: number;
-    _modified: number;
-    _cby: string;
-    folder: string;
-    _id: string;
-}
-
-interface Project {
-  name: string;
-  url: string;
-  description: string;
-  details: string;
-  image: Project_image;
-  tech: Stack[];
-  _modified: number;
-  _mby: string;
-  _created: number;
-  _state: number;
-  _cby: string;
-  _id: string;
-}
+import Image from "next/image"
+import { Project, Stack } from '@/interfaces';
 
 interface Props {
   fadeIn: boolean;
@@ -122,14 +53,16 @@ export default function ReelDetail({ fadeIn, index, project, grid, id }: Props) 
         <div className={s.tech}>
           {sortedTech.map((entry) => {
             return entry.stack.image !== null ? (
-              <div
-                className={s.stack}
-                style={{
-                  backgroundImage: `url("https://cms.mrweber.ch/storage/uploads/${entry.stack.image.path}")`,
-                }}
-                title={`${entry.stack.brand}`}
-                key={entry.stack._id}
-              ></div>
+              <div className={s.stack} key={entry.stack._id}>
+                <Image
+                  src={`https://cms.mrweber.ch/storage/uploads/${entry.stack.image.path}`}
+                  alt={entry.stack.brand}
+                  fill={true}
+                  style={{objectFit: "contain"}}
+                  title={entry.stack.brand}
+                >
+                </Image>
+              </div>
             ) : null;
           })}
         </div>

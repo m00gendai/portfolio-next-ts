@@ -1,4 +1,4 @@
-export default function Error(){
+export default function NotFound(){
 
     const text:React.CSSProperties = {
         position: "relative",
