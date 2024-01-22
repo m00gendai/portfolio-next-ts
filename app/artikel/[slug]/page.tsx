@@ -12,9 +12,9 @@ interface Props{
 }
 
 export async function generateMetadata({params}:Props){
-    const data:Blog = await getBlog(params.slug)
+    const data:Blog = await getBlog(urlReplacer(params.slug))
 
-    if(urlReplacer(decodeURIComponent(data.title)) !== urlReplacer(decodeURIComponent(params.slug))){
+    if(urlReplacer(data.title) !== urlReplacer(params.slug)){
         return{
             title: "Inhalt nicht gefunden"
         }
