@@ -10,6 +10,9 @@ export function urlReplacer(string:string){
         .replaceAll(",", "")
         .replaceAll(":", "")
         .replaceAll("?", "")
+        .replaceAll("ü", "ue")
+        .replaceAll("ö", "oe")
+        .replaceAll("ä", "ae")
 }
 
 export function stringReplacer(string:string){
