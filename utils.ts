@@ -2,17 +2,9 @@ import { Metadata } from "./interfaces"
 
 export function urlReplacer(string:string){
     return string
-        .toLowerCase()
-        .replaceAll(" ", "-")
-        .replaceAll("/", "-")
-        .replaceAll("(", "")
-        .replaceAll(")", "")
-        .replaceAll(",", "")
-        .replaceAll(":", "")
+        .toLocaleLowerCase()
+        .replaceAll(" ", "_")
         .replaceAll("?", "")
-        .replaceAll("ü", "ue")
-        .replaceAll("ö", "oe")
-        .replaceAll("ä", "ae")
 }
 
 export function stringReplacer(string:string){

@@ -12,9 +12,9 @@ interface Props{
 }
 
 export async function generateMetadata({params}:Props){
-    const data:Blog = await getBlog(urlReplacer(params.slug))
+    const data:Blog = await getBlog(params.slug)
 
-    if(urlReplacer(data.title) !== urlReplacer(params.slug)){
+    if(urlReplacer(data.title) !== decodeURIComponent(params.slug)){
         return{
             title: "Inhalt nicht gefunden"
         }
@@ -28,7 +28,7 @@ export async function generateMetadata({params}:Props){
             description: stringReplacer(data.intro),
             images: [
                 {
-                    url: data.hero ? `https://cms.mrweber.ch/storage/uploads/${data.hero.path}` : "./sd_mrweber3.jpg",
+                    url: data.hero ? `https://cms.mrweber.ch/storage/uploads/${data.hero.path}` : "",
                 }
             ],
             locale: 'de_CH',
@@ -58,7 +58,7 @@ async function getBlog(slug:string){
 
     const blogs:Blog[] = await getBlogs.json()
     const blog:Blog[] = blogs.filter(blog=>{
-        return urlReplacer(decodeURIComponent(blog.title)) === urlReplacer(decodeURIComponent(slug))
+        return urlReplacer(blog.title) === decodeURIComponent(slug)
     })
     return blog[0]
 }  
