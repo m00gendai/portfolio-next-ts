@@ -9,6 +9,7 @@ export function urlReplacer(string:string){
         .replaceAll(")", "")
         .replaceAll(",", "")
         .replaceAll(":", "")
+        .replaceAll("?", "")
 }
 
 export function stringReplacer(string:string){
