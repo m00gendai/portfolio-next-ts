@@ -36,7 +36,7 @@ export default async function Artikel(){
                         const date = new Date(blog._created*1000).toLocaleDateString()
                         return(
                             <div className={s.inner} key={blog._id}>
-                                <Link className={s.blog} href={`/artikel/${urlReplacer(blog.title)}`}>
+                                <Link className={s.blog} href={`/artikel/${encodeURIComponent(urlReplacer(blog.title))}`}>
                                     <div className={s.thumb}>
                                         <Image
                                             src={`https://cms.mrweber.ch/storage/uploads/${blog.hero.path}`}
