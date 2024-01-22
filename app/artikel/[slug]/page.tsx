@@ -13,7 +13,7 @@ interface Props{
 
 export async function generateMetadata({params}:Props){
     const data:Blog = await getBlog(params.slug)
-
+    console.log(params.slug)
     if(urlReplacer(data.title) !== decodeURIComponent(params.slug)){
         return{
             title: "Inhalt nicht gefunden"
@@ -56,9 +56,11 @@ async function getBlog(slug:string){
         }
     )
 
+    const decodedSlug: string = decodeURIComponent(urlReplacer(slug))
+
     const blogs:Blog[] = await getBlogs.json()
     const blog:Blog[] = blogs.filter(blog=>{
-        return urlReplacer(blog.title) === decodeURIComponent(slug)
+        return urlReplacer(blog.title) === decodedSlug
     })
     return blog[0]
 }  
