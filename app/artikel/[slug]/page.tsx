@@ -28,7 +28,7 @@ export async function generateMetadata({params}:Props){
             description: stringReplacer(data.intro),
             images: [
                 {
-                    url: data.hero ? `https://cms.mrweber.ch/storage/uploads/${data.hero.path}` : "",
+                    url: data.hero ? `https://cms.mrweber.ch/storage/uploads/${data.hero.path}` : "./sd_mrweber3.jpg",
                 }
             ],
             locale: 'de_CH',
