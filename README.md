@@ -1,4 +1,4 @@
-Portfolio Website using Next.js 13 with the Pages Router.
+Portfolio Website using Next.js 14 with App Router.
 
 Depends on Cockpit CMS for Texts and Assets and needs an API key provided as an environment variable.
 Refer to interfaces for Model Schema.

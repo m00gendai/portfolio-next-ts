@@ -59,7 +59,7 @@ export async function pageMetadata(pageName:string){
             description: metadata.description,
             images: [
                 {
-                    url: metadata.image ? `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}` : "",
+                    url: metadata.image ? `https://cms.mrweber.ch/storage/uploads/${metadata.image.path}` : "./sd_mrweber3.jpg",
                 }
             ],
             locale: 'de_CH',
