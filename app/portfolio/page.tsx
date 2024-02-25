@@ -1,5 +1,4 @@
 import Reel from "@/components/Reel";
-import ReelPortrait from "@/components/Reel_portrait";
 import { Info, Project } from "@/interfaces";
 import { pageMetadata } from "@/utils";
 
@@ -77,15 +76,16 @@ export default async function Home(){
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].intro}}></div>
                 <h2>Webseiten</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].projects}}></div>
-                <Reel projects={projects} id={`live`}/>
+                <Reel projects={projects} id={`live`} orientation={`landscape`}/>
                 <div className="divider"></div>
                 <h2>Demos & Beispiele</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
-                <Reel projects={demos} id={`demo`}/>
+                <Reel projects={demos} id={`demo`} orientation={`landscape`}/>
                 <div className="divider"></div>
                 <h2>Webapplikationen</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].apps}}></div>
-                <ReelPortrait projects={apps} id={`apps`}/>
+                <h3>Optimiert für Hochformat</h3>
+                <Reel projects={apps} id={`apps`} orientation={`portrait`}/>
             </section>
         </main>
     )
