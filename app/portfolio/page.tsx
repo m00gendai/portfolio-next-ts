@@ -1,7 +1,8 @@
+import Reel from "@/components/Reel";
+import ReelPortrait from "@/components/Reel_portrait";
 import { Info, Project } from "@/interfaces";
 import { pageMetadata } from "@/utils";
-import dynamic from "next/dynamic";
-  
+
 export async function generateMetadata(){
     return pageMetadata("Portfolio")
 }
@@ -69,13 +70,6 @@ export default async function Home(){
     const apps:Project[] = await getApps()
     const info:Info[] = await getInfos()
 
-    const DynamicReel = dynamic(()=>import('../../components/Reel'),{
-        ssr: false,}
-    )
-    const DynamicReelPortrait = dynamic(()=>import('../../components/Reel_portrait'),{
-        ssr: false,}
-    )
-
     return(
         <main className="main">
             <section className="section">
@@ -83,15 +77,15 @@ export default async function Home(){
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].intro}}></div>
                 <h2>Webseiten</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].projects}}></div>
-                <DynamicReel projects={projects} id={`live`}/>
+                <Reel projects={projects} id={`live`}/>
                 <div className="divider"></div>
                 <h2>Demos & Beispiele</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
-                <DynamicReel projects={demos} id={`demo`}/>
+                <Reel projects={demos} id={`demo`}/>
                 <div className="divider"></div>
                 <h2>Webapplikationen</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].apps}}></div>
-                <DynamicReelPortrait projects={apps} id={`apps`}/>
+                <ReelPortrait projects={apps} id={`apps`}/>
             </section>
         </main>
     )
