@@ -9,9 +9,10 @@ import { Project } from '@/interfaces';
 interface props {
   projects: Project[];
   id: string;
+  orientation: string
 }
 
-export default function Reel({ projects, id }: props) {
+export default function Reel({ projects, id, orientation }: props) {
   /*
     This ref references the grid container
   */
@@ -22,38 +23,16 @@ export default function Reel({ projects, id }: props) {
   const [grid, setGrid] = useState<number[]>([]); // sets the [columns, rows] of the currently displayed grid
   const [fadeIn, setFadeIn] = useState<boolean>(true); // toggles fade-in/fade-out animation
 
-  /*
-    ResizeObserver logic copied from
-    https://blog.sethcorker.com/resize-observer-api/
-    This observes the container grid to always know the column/row ratio
-  */
-  
-    const observer = useRef(
-    new ResizeObserver((entries) => {
-      const cols: number = getComputedStyle(
-        entries[0].target
-      ).gridTemplateColumns.split(' ').length; // gets column count
-      const rows: number = getComputedStyle(
-        entries[0].target
-      ).gridTemplateRows.split(' ').length; // gets row count
-      const gridMeasurement: number[] = [cols, rows];
-      setGrid(gridMeasurement);
-    })
-  );
+  function griderzize(){
+    const cols: number = getComputedStyle(container.current!).gridTemplateColumns.split(' ').length; // gets column count
+    const rows: number = getComputedStyle(container.current!).gridTemplateRows.split(' ').length; // gets row count
+    const gridMeasurement: number[] = [cols, rows];
+    setGrid(gridMeasurement);
+  }
 
-  useEffect(() => {
-    if (container.current) {
-      observer.current.observe(container.current);
-    }
-
-    return () => {
-        if(container.current){
-      observer.current.unobserve(container.current);
-        }
-    };
-  }, [container, observer]);
-
-  function handleClick(index: number, url: string) {
+  function handleClick(index: number) {
+    griderzize()
+    
     setIndx(index); // sets index of currently clicked element in container grid
     // if text box is not visible
     if (!open) {
@@ -82,7 +61,7 @@ export default function Reel({ projects, id }: props) {
       setTimeout(function () {
         document.getElementById(`bigscreen_${id}`)?.scrollIntoView({
           behavior: 'smooth',
-          block: 'start',
+          block: 'nearest',
           inline: 'center',
         });
       }, 500);
@@ -99,20 +78,20 @@ export default function Reel({ projects, id }: props) {
   }
 
   return (
-    <div className={s.container} ref={container}>
+    <div className={orientation === "landscape" ? s.container : s.container_portrait} ref={container}>
       {projects.map((project: Project, index: number) => {
         return (
           <div
-            className={s.tile}
+            className={orientation === "landscape" ? s.tile : s.tile_portrait}
             key={`projectTile_${index}`}
-            onClick={() => handleClick(index, project.url)}
+            onClick={() => handleClick(index)}
           >
             <div className={s.inner}>
               <Image
                 src={`https://cms.mrweber.ch/storage/uploads/${project.image.path}`}
                 alt={project.name}
-                width={project.image.width}
-                height={project.image.height}
+                  width={project.image.width}
+                  height={project.image.height}
                 style={imageStyle}
                 title={project.name}
               >
