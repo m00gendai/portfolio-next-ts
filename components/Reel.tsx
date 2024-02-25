@@ -9,9 +9,10 @@ import { Project } from '@/interfaces';
 interface props {
   projects: Project[];
   id: string;
+  orientation: string
 }
 
-export default function Reel({ projects, id }: props) {
+export default function Reel({ projects, id, orientation }: props) {
   /*
     This ref references the grid container
   */
@@ -77,11 +78,11 @@ export default function Reel({ projects, id }: props) {
   }
 
   return (
-    <div className={s.container} ref={container}>
+    <div className={orientation === "landscape" ? s.container : s.container_portrait} ref={container}>
       {projects.map((project: Project, index: number) => {
         return (
           <div
-            className={s.tile}
+            className={orientation === "landscape" ? s.tile : s.tile_portrait}
             key={`projectTile_${index}`}
             onClick={() => handleClick(index)}
           >
