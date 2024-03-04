@@ -3,8 +3,8 @@ import s from "./CookieExplainer.module.css"
 import CookieDeleteButton from "./CookieDeleteButton"
 
 interface Props{
-    websiteName: string | undefined
-    analyticsCookie: string | undefined
+    websiteName: string
+    analyticsCookie: string
 }
 
 export default function CookieExplainer({websiteName, analyticsCookie}:Props){

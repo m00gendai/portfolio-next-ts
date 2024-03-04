@@ -26,7 +26,7 @@ export default function RootLayout({children}:{children: React.ReactNode}){
         margin: "0 0.5rem"
     }
 
-    const analyticsAllowed:string | undefined = cookies().get(`${process.env.COOKIE_ANALYTICS}`)?.value
+    const analyticsAllowed:string | undefined = cookies().get("analyticsAllowed")?.value
 
     return(
         <html lang="de">
@@ -51,7 +51,7 @@ export default function RootLayout({children}:{children: React.ReactNode}){
       <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
-  {analyticsAllowed === undefined ? <CookieBanner analyticsCookie={process.env.COOKIE_ANALYTICS ? process.env.COOKIE_ANALYTICS : ""}/> : null}
+  {analyticsAllowed === undefined ? <CookieBanner analyticsCookie={"analyticsAllowed"}/> : null}
   {analyticsAllowed === "true" ? <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA}`} /> : null}
   </body>
         </html>

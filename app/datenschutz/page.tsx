@@ -36,7 +36,7 @@ export default async function Datenschutz(){
                 <div className={s.container}>
                 <div className={s.item} >
                     <h3 style={{wordBreak: "break-all"}}>{"Cookies"}</h3>
-                    <CookieExplainer websiteName={process.env.WEBSITE_NAME ? process.env.WEBSITE_NAME : ""} analyticsCookie={process.env.COOKIE_ANALYTICS ? process.env.COOKIE_ANALYTICS : ""} />
+                    <CookieExplainer websiteName={"mrweber.ch"} analyticsCookie={"analyticsAllowed"} />
                     <div className={s.text}></div>
                 </div>
                 {data[0].chapter.map((item, index) =>{

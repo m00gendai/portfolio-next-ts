@@ -9,11 +9,11 @@ interface Props{
 }
 
 function accept(analyticsCookie:string){
-    setThatCookie(analyticsCookie, "true")
+    setThatCookie("analyticsAllowed", "true")
 }
 
 function refuse(analyticsCookie:string){
-    setThatCookie(analyticsCookie, "false")
+    setThatCookie("analyticsAllowed", "false")
 }
 
 export default function CookieBanner({analyticsCookie}:Props){
