@@ -6,7 +6,10 @@ import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "rea
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { Providers } from './providers'
-import CookieClientWrapper from '@/components/CookieClientWrapper'
+import CookieBanner from '@/components/Cookies/CookieBanner'
+import { GoogleAnalytics } from "@next/third-parties/google"
+import { cookies } from "next/headers"
+
 
 
 export default function RootLayout({children}:{children: React.ReactNode}){
@@ -21,7 +24,9 @@ export default function RootLayout({children}:{children: React.ReactNode}){
         borderRadius: "1rem",
         color: "black",
         margin: "0 0.5rem"
-      }
+    }
+
+    const analyticsAllowed:string | undefined = cookies().get(`${process.env.COOKIE_ANALYTICS}`)?.value
 
     return(
         <html lang="de">
@@ -30,7 +35,6 @@ export default function RootLayout({children}:{children: React.ReactNode}){
   <Navbar_Mobile /> 
   <Navbar />
   <Providers>{children}</Providers>
-  <CookieClientWrapper />
   <footer className={s.footer}>
     <div className={s.inner}>
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
@@ -47,7 +51,8 @@ export default function RootLayout({children}:{children: React.ReactNode}){
       <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
-  
+  {analyticsAllowed === undefined ? <CookieBanner analyticsCookie={process.env.COOKIE_ANALYTICS ? process.env.COOKIE_ANALYTICS : ""}/> : null}
+  {analyticsAllowed === "true" ? <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA}`} /> : null}
   </body>
         </html>
     )
