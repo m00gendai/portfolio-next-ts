@@ -1,0 +1,44 @@
+
+.none{
+    position: relative;
+    width: 100%;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+.tableContainer{
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    position: relative;
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid white;
+}
+
+.table thead > tr > th{
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.table tbody > tr{
+    border: 1px solid black;
+}
+
+.table tbody > tr > td{
+    border: 1px solid black;
+    padding: 0.5rem;
+    white-space: pre;
+    border: 1px solid white;
+}
+
+.cookieAction{
+    position: relative;
+    display: flex;
+    gap: 1rem;
+}

@@ -1,0 +1,81 @@
+.banner{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner::before{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    height: 0.25rem;
+    width: 100%;
+    background: var(--linear-090-mainRed-mainBlue);
+    content: "";
+}
+
+.inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+
+@media screen and (max-aspect-ratio: 13/9){
+    .inner{
+        grid-template-columns: 1fr;
+    }
+}
+
+.text{
+    position: relative;
+    width: 100%;
+}
+
+.action{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.button{
+    position: relative;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.accept{
+    background: lime;
+    color: black;
+}
+
+.reject{
+    background: red;
+    color: black;
+}
+
+.dsgvo{
+    background: yellow;
+    color: black;
+    text-decoration: none;
+}
