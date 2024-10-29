@@ -7,23 +7,9 @@ import Link from "next/link"
 
 export default function SplashText(){
     const prefixes:string[] = [
-        "Vereins", 
-        "Portfolio", 
-        "Club", 
-        "Betriebs", 
-        "Info", 
-        "Geschäfts", 
-        "Hobby", 
-        "Projekt",
-        "Blog",
-        "Unternehmens",
-        "Veranstaltungs",
-        "Medien",
-        "WordPress",
-        "Foto",
-        "ClubDesk",
-        "Video",
-        "Musik",
+        "kreiere Webseiten",
+        "entwickle Mobile Apps",
+        "erstelle Webapplikationen",
       ]
       
       const [index, setIndex] = useState<number>(0)
@@ -38,16 +24,7 @@ export default function SplashText(){
     return(
     <div className={s.splashText}>
             <h1 className={s.title}>
-              <span className={s.span}>{`Ihre neue `}</span>
-              <span className={`${s.spanL} ${s.span}` }>
-                <TextTransition 
-                  inline 
-                  springConfig={presets.slow} 
-                  direction="up"
-                  className={s.transition}
-                >{prefixes[index % prefixes.length]}</TextTransition>
-              </span>
-              <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
+              <span className={s.span}>Webseiten, Webapplikationen & Mobile Apps aus regionalem Anbau</span>
             </h1>
             <div className="buttonContainerDuo">
             <Link href="/portfolio" className="buttonBg" title="Angebote">

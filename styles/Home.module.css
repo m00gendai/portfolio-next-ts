@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: flex-start;
+    align-content: center;
     height: calc(90vh - 4rem);
 }
 
@@ -32,17 +32,11 @@
 
 .spanL{ 
     margin: 0;
-    width: 50%;
+    width: 10%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
-.spanR{
-    width: 50%;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-}
 
 .transition{
     position: "relative";
