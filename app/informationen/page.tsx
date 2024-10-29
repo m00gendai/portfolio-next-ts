@@ -53,12 +53,17 @@ export default async function Angebote(){
     return(
         <main className="main">
             <section className="section">
-                <h1 className="title">Informationen</h1>
+                <h1 className="title">Über mich</h1>
+                <div className={t.container}>
+                                        {techSorted.map((stack, index)=>{
+                                            return <TechStack tech={stack} key={stack._id}/>
+                                        })} 
+                                    </div>
                 {infos.map((info, index)=>{
                     return(
                         <React.Fragment key={`section_${info._id}`}>
                             <div className={s.container} key={info._id}>
-                                <h2 className={s.title} key={`title_${info._id}`}>{info.title}</h2>
+                       
                                 {info.content?.map((content, index)=>{
                                     return (
                                         <React.Fragment key={`text_${index}`}>
