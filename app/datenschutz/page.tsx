@@ -33,14 +33,14 @@ export default async function Datenschutz(){
             <section className="section">
                 <h1 className="title">Daten<wbr/>schutz<wbr/>erklärung</h1>
                 <div className={s.container}>
-                    {data[0].chapter.map((item, index) =>{
-                        return(
-                            <div className={s.item} key={`${item.title}_${index}`}>
-                                <h3 style={{wordBreak: "break-all"}}>{item.title}</h3>
-                                <div className={s.text} dangerouslySetInnerHTML={{__html: item.content}}></div>
-                            </div>
-                        )
-                    })}
+                {data[0].chapter.map((item, index) =>{
+                    return(
+                        <div className={s.item} key={`${item.title}_${index}`}>
+                            <h3 style={{wordBreak: "break-all"}}>{item.title}</h3>
+                            <div className={s.text} dangerouslySetInnerHTML={{__html: item.content}}></div>
+                        </div>
+                    )
+                })}
                 </div>
             </section>
         </main>
