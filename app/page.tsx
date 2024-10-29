@@ -22,12 +22,6 @@ export default async function Home(){
             <section className="homeSection" style={background}>
                 <SplashText />
             </section>
-            <span className={s.whackyWavingInflatableArmsFlailingTubeMan}>
-                <p>{`Ansprechende Webseiten aus regionalem Anbau für Vereine, Organisationen, Persönlichkeiten, KMUs und vieles mehr.`}</p>
-                <p>{`mrweber.ch ist nicht nur Webdesign, sondern auch Webentwicklung.` }</p>
-                <p>{`Von WordPress über ClubDesk bis zur handgemachten Massarbeit mit JavaScript/TypeScript, React und Next.js.`}</p>
-                <p dangerouslySetInnerHTML={{__html: ctaText}}></p>
-            </span>
         </main>
     )
 }
