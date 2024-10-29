@@ -38,9 +38,7 @@ export default function Navbar_Mobile(){
             {open ? <div className={s.inner}>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/">Home</Link>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/portfolio">Portfolio</Link>
-                <Link className={s.link} onClick={()=>handleLink()} href= "/angebote">Angebote</Link>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/informationen">Informationen</Link>
-                <Link className={s.link} onClick={()=>handleLink()} href= "/artikel">Artikel</Link>
                 <Link className={s.link} onClick={()=>handleLink()} href= "/kontakt">Kontakt</Link>
             </div>
             :

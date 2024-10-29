@@ -50,14 +50,14 @@ export default function SplashText(){
               <span className={`${s.spanR} ${s.span}`}>{`webseite?`}</span>
             </h1>
             <div className="buttonContainerDuo">
-            <Link href="/angebote" className="buttonBg" title="Angebote">
-              <div className="button">
-                Angebote
-              </div>
-            </Link>
-            <Link href="/portfolio" className="buttonBg" title="Portfolio">
+            <Link href="/portfolio" className="buttonBg" title="Angebote">
               <div className="button">
                 Portfolio
+              </div>
+            </Link>
+            <Link href="/kontakt" className="buttonBg" title="Portfolio">
+              <div className="button">
+                Kontakt
               </div>
             </Link>
           </div>
