@@ -1,7 +1,6 @@
 import { pageMetadata } from "@/utils";
 import { Dsgvo } from "../../interfaces";
 import s from "@/styles/Dsgvo.module.css"
-import CookieExplainer from "@/components/Cookies/CookieExplainer";
 
 export async function generateMetadata(){
     return pageMetadata("Datenschutz")
@@ -34,11 +33,6 @@ export default async function Datenschutz(){
             <section className="section">
                 <h1 className="title">Daten<wbr/>schutz<wbr/>erklärung</h1>
                 <div className={s.container}>
-                <div className={s.item} >
-                    <h3 style={{wordBreak: "break-all"}}>{"Cookies"}</h3>
-                    <CookieExplainer websiteName={"mrweber.ch"} analyticsCookie={"analyticsAllowed"} />
-                    <div className={s.text}></div>
-                </div>
                 {data[0].chapter.map((item, index) =>{
                     return(
                         <div className={s.item} key={`${item.title}_${index}`}>

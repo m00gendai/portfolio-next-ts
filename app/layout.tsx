@@ -6,10 +6,6 @@ import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "rea
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { Providers } from './providers'
-import CookieBanner from '@/components/Cookies/CookieBanner'
-import { GoogleAnalytics } from "@next/third-parties/google"
-import { cookies } from "next/headers"
-
 
 
 export default function RootLayout({children}:{children: React.ReactNode}){
@@ -26,12 +22,9 @@ export default function RootLayout({children}:{children: React.ReactNode}){
         margin: "0 0.5rem"
     }
 
-    const analyticsAllowed:string | undefined = cookies().get("analyticsAllowed")?.value
-
     return(
         <html lang="de">
             <body>
-  
   <Navbar_Mobile /> 
   <Navbar />
   <Providers>{children}</Providers>
@@ -51,8 +44,6 @@ export default function RootLayout({children}:{children: React.ReactNode}){
       <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
-  {analyticsAllowed === undefined ? <CookieBanner analyticsCookie={"analyticsAllowed"}/> : null}
-  {analyticsAllowed === "true" ? <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA}`} /> : null}
   </body>
         </html>
     )
