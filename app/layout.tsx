@@ -6,7 +6,6 @@ import { SiGithub, SiStackblitz, SiLinkedin, SiSololearn, SiFacebook } from "rea
 import React from 'react'
 import Navbar_Mobile from '@/components/Navbar_Mobile'
 import { Providers } from './providers'
-import CookieClientWrapper from '@/components/CookieClientWrapper'
 
 
 export default function RootLayout({children}:{children: React.ReactNode}){
@@ -21,16 +20,14 @@ export default function RootLayout({children}:{children: React.ReactNode}){
         borderRadius: "1rem",
         color: "black",
         margin: "0 0.5rem"
-      }
+    }
 
     return(
         <html lang="de">
             <body>
-  
   <Navbar_Mobile /> 
   <Navbar />
   <Providers>{children}</Providers>
-  <CookieClientWrapper />
   <footer className={s.footer}>
     <div className={s.inner}>
       {`© mrweber.ch 2023${currentYear > 2023 ? `-${currentYear}` : ""}`}
@@ -47,7 +44,6 @@ export default function RootLayout({children}:{children: React.ReactNode}){
       <Link title="Datenschutzerklärung" className={`${s.link} ${s.right}`} href="/datenschutz">Datenschutzerklärung</Link>
     </nav>
   </footer>
-  
   </body>
         </html>
     )
