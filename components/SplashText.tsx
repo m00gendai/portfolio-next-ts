@@ -24,7 +24,7 @@ export default function SplashText(){
     return(
     <div className={s.splashText}>
             <h1 className={s.title}>
-              <span className={s.span}>Webseiten, Webapplikationen & Mobile Apps aus regionalem Anbau</span>
+Webseiten, Web-Applikationen & Mobile Apps aus regionalem Anbau
             </h1>
             <div className="buttonContainerDuo">
             <Link href="/portfolio" className="buttonBg" title="Angebote">
