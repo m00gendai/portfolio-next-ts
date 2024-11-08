@@ -35,9 +35,9 @@
     .wrapper{
         flex-wrap: wrap;
     }
-    .spanL, .spanR{
-        justify-content: center;
-        width: 100%;
+    .title{
+        font-size: 1.5rem;
+        max-height: calc(50dvh);
     }
     .transition{
         justify-content: center;
