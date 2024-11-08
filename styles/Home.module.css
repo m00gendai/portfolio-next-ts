@@ -18,25 +18,11 @@
     background-clip:initial;
     background: transparent;
     color: white;
-}
-
-.span {
-    position: relative;
     text-shadow: 2px 2px 5px var(--minorBlue), -2px -2px 5px var(--minorBlue), -2px 2px 5px var(--minorRed), 2px -2px 5px var(--minorRed);
     font-size: 3rem;
-    width: 100%;
     text-align: center;
-    margin: 5rem 0 0 0;
-    color: white;
+    word-wrap: break-word;
 }
-
-.spanL{ 
-    margin: 0;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-}
-
 
 .transition{
     position: "relative";

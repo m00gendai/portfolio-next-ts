@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import {isFormValue} from "@/interfaces"
 
-export async function POST(req: NextRequest, res: NextResponse){
+export async function POST(req: NextRequest){
 
     let nodemailer:any = require('nodemailer')
 
