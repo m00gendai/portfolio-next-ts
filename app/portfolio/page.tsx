@@ -78,10 +78,10 @@ export default async function Home(){
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].projects}}></div>
                 <Reel projects={projects} id={`live`} orientation={`landscape`}/>
                 <div className="divider"></div>
-                <h2>Demos & Beispiele</h2>
+                {/*<h2>Demos & Beispiele</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].demos}}></div>
                 <Reel projects={demos} id={`demo`} orientation={`landscape`}/>
-                <div className="divider"></div>
+                <div className="divider"></div>*/}
                 <h2>Apps</h2>
                 <div className="description" dangerouslySetInnerHTML={{__html: info[0].apps}}></div>
                 <h3>Optimiert für Hochformat</h3>
